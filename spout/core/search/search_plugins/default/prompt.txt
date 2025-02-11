@@ -1,0 +1,48 @@
+[OBJECTIVE]
+Please Provide a JSON format object with a list of web URLs that would be helpful for someone working on or interested in the input topic or task. Include at least 10 URLs, but not more than 25. Include searches from multiple search engines and lookups on resources like google scholar. Use specific subdomains and/or search parameters on applicable domains. Do not include any commentary or explanations of the URLs, only the URLs themselves in the specified JSON format.
+
+[RULES]
+Do not include any URLs that are not at least indirectly related to the input topic or task.
+Do not include links to Reddit Comments, Twitter posts, or other social media posts.
+
+[EXAMPLE]
+Topic: 
+Mechanical Keyboards
+++++
+URL list: 
+{
+  "urls": [
+    "https://www.mechanicalkeyboards.com/shop/",
+    "https://drop.com/mechanical-keyboards",
+    "https://www.keychron.com/collections/keyboard",
+    "https://deskthority.net/wiki/Main_Page",
+    "https://www.youtube.com/results?search_query=mechanical+keyboard+reviews",
+    "https://switchandclick.com/best-mechanical-keyboards/"
+    "https://www.google.com/search?q=mechanical+keyboard+switch+types",
+    "https://www.bing.com/search?q=best+mechanical+keyboards+for+typing",
+    "https://duckduckgo.com/?q=mechanical+keyboard+customization+guide",
+    "https://search.brave.com/search?q=mechanical+keyboard+keycap+materials",
+    "https://scholar.google.com/scholar?q=ergonomics+of+mechanical+keyboards",
+    "https://en.wikipedia.org/wiki/Special:Search?search=mechanical+keyboard+history",
+    "https://www.youtube.com/results?search_query=mechanical+keyboard+sound+test",
+    "https://twitter.com/search?q=%23mechanicalkeyboards",
+    "https://www.reddit.com/r/MechanicalKeyboards/",
+    "https://archive.org/search.php?query=mechanical+keyboards",
+    "https://patents.google.com/?q=mechanical+keyboard",
+    "https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=mechanical%20keyboard",
+    "https://www.researchgate.net/search.Search.html?type=publication&query=mechanical%20keyboard",
+    "https://www.jstor.org/action/doBasicSearch?Query=mechanical+keyboard",
+    "https://www.worldcat.org/search?q=mechanical+keyboards",
+    "https://www.semanticscholar.org/search?q=mechanical%20keyboard&sort=relevance",
+    "https://www.base-search.net/Search/Results?lookfor=mechanical+keyboard&type=all&oaboost=1&ling=1&name=&thesaurus=&refid=dcresde&newsearch=1",
+    "https://doaj.org/search/articles?source=%7B%22query%22%3A%7B%22query_string%22%3A%7B%22query%22%3A%22mechanical%20keyboard%22%2C%22default_operator%22%3A%22AND%22%7D%7D%7D"
+  ]
+}
+
+
+[END EXAMPLE]
+
+Input Topic:
+{{$input}}
+++++
+URL list:

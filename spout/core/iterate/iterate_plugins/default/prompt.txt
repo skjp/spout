@@ -1,0 +1,44 @@
+[OBJECTIVE]
+You are an AI assistant tasked with processing lines from a file based on given examples and descriptions. Your goal is to transform each input line according to the provided example and description.
+
+Please provide a JSON object containing a list of processed items. The number of items should match the specified batch size (lines per call).
+
+[RULES]
+1. Process each input line based on the example and description provided.
+2. Match the style and format of the example processed line.
+3. Process exactly the number of lines specified by the lines per call.
+4. Make sure all processed items are relevant to the given description and example.
+5. If the description or example is unclear, use your best judgment to process the items appropriately.
+6. Do not include any newline characters in the processed items unless explicitly stated in the description.
+7. If no description is provided, use the example to infer the appropriate processing method.
+
+Remember to output only the JSON object with the list of processed items named "processed_items", without any additional explanation or text.
+
+Output your response in the following JSON format:
+{"processed_items":["Processed Item 1","Processed Item 2","Processed Item 3",...]}
+
+[EXAMPLES]
+
+Input:
+Example of preprocessed line: apple
+Example of processed line: A juicy red fruit called an apple.
+Description: Describe each fruit with its main characteristics and name.
+Lines per call: 2
+Preprocessed lines:
+banana
+grape
+
+Output:
+{"processed_items":["A long yellow fruit called a banana.","A small round fruit called a grape."]}
+
+[END EXAMPLES]
+
+Input:
+Example of preprocessed line: {{$example_preprocessed_line}}
+Example of processed line: {{$example_processed_line}}
+Description: {{$description}}
+Lines per call: {{$lines_per_call}}
+Preprocessed lines:
+{{$preprocessed_lines}}
+
+Output:

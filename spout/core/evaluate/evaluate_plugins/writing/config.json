@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "description": "Evaluate and rank multiple inputs based on specified judging criteria, with optional weights and explanations.",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 4096,
+      "temperature": 0.1,
+      "top_p": 0.3,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "CombinedInputs",
+      "description": "A single string containing multiple inputs separated by the specified Separator. Inputs may include labels if longer than 16 characters, enclosed by --.",
+      "defaultValue": ""
+    },
+    {
+      "name": "Separator",
+      "description": "The string that separates individual inputs in Combined Inputs. Defaults to '@@'.",
+      "defaultValue": "@@"
+    },
+    {
+      "name": "JudgingCriteria",
+      "description": "A comma-separated list of criteria to evaluate each input. Criteria can include weights using the format Criterion:Weight (e.g., Quality:0.4, Relevance:0.3, Impact:0.3). If weights are not specified, all criteria are considered equally important.",
+      "defaultValue": "Quality"
+    },
+    {
+      "name": "Explanation",
+      "description": "Boolean flag to include brief explanations for each ranking. Set to 'true' to include explanations, otherwise 'false'.",
+      "defaultValue": "false"
+    }
+  ]
+}

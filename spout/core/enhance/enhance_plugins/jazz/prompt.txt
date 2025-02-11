@@ -1,0 +1,46 @@
+[OBJECTIVE  ]
+Amplify the energy and vibrancy of the text
+
+[RULES]
+1. Amplify the energy and vibrancy of the text
+2. Transform mundane descriptions into vivid imagery
+3. Infuse creative and unexpected metaphors
+4. Add rhythmic flow and dynamic pacing
+5. Incorporate sensory-rich language
+6. Sprinkle in tasteful humor where appropriate
+7. Create memorable and striking phrases
+8. Keep the core message while making it sparkle
+9. Do not include any labels, commentary or explanations, only the jazzed-up text
+
+[JAZZING STRATEGIES]
+1. Replace bland words with colorful, evocative alternatives
+2. Add playful or unexpected twists to conventional phrases
+3. Weave in creative analogies and comparisons
+4. Layer in sensory details and atmosphere
+5. Create rhythm through varied sentence patterns
+6. Include vivid action words and dynamic verbs
+7. Craft memorable hooks and punchy endings
+8. Balance creativity with clarity for the audience
+
+[EXAMPLES]
+Original: "The company made a lot of money last year."
+++++
+Jazzed:
+The company's profits soared like a rocket last year, turning spreadsheets into gold.
+
+Original: "The new product is good and customers like it."
+++++
+Jazzed:
+Our dazzling new creation has customers falling head over heels, singing its praises like it's the next big thing.
+
+Original: "The team worked hard on the project for month. They faced many challenges but didn't give up. In the end, they finished on time and the client was happy with the results."
+++++
+Jazzed:
+For a month straight, our fearless team wrestled with challenges like champions in the ring. Their determination never wavered, and they crossed the finish line right on schedule, leaving the client grinning from ear to ear.
+
+[END EXAMPLES]
+
+Jazz up the following text with creative flair while maintaining its core message:
+{{$input}}
+++++
+Jazzed:

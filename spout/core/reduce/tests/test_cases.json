@@ -1,0 +1,38 @@
+{
+	"test_cases": [
+		{
+			"name": "basic_summarization",
+			"spoutlet": "default",
+			"parameters": {
+				"input": "This is a long text that needs to be reduced. It contains multiple sentences and provides detailed information about a specific topic."
+			},
+			"expected_pattern": "^[\\s\\S]{2,116}$",
+			"timeout": 30,
+			"sample": true
+		},
+		{
+			"name": "default_summarization_2", 
+			"spoutlet": "default",
+			"parameters": {
+				"input": "The quick brown fox jumped over the lazy dog. This classic pangram contains every letter of the English alphabet at least once."
+			},
+			"expected_pattern": "^[\\s\\S]{2,116}$",
+			"timeout": 30,
+			"sample": true
+		},
+		{
+			"name": "namer_summarization",
+			"spoutlet": "namer",
+			"parameters": {
+				"input": "This is a text about a dog named Spot who likes to chase balls in the park. He is a golden retriever with a friendly personality."
+			},
+			"expected_pattern": "^[\\w\\s_]{3,50}$",
+			"timeout": 30,
+			"sample": true
+		}
+	],
+	"global_settings": {
+		"default_timeout": 30,
+		"default_model": "gpt-3.5-turbo"
+	}
+}

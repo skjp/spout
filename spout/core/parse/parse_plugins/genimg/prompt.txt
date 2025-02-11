@@ -1,0 +1,109 @@
+[OBJECTIVE]
+Parse the provided image generation prompt into 6 key components that are commonly used in AI image generation.
+
+[RULES]
+1. Break down the input prompt into the following categories: Style, Subject, Setting, Composition, Lighting, and Other
+2. Place each relevant part of the prompt into its appropriate category
+3. If a category has no relevant content from the prompt, set its value to an empty string
+4. Structure the output as a JSON object with these 6 categories under "ParsedParts"
+5. Ensure all text remains in its original form without interpretation or expansion
+6. Return only the JSON object, no additional formatting or explanation
+
+[EXAMPLES]
+
+**Input Variables:**
+- **InputText:** "A cyberpunk street vendor illuminated by neon signs, shot from a low angle, in the style of Blade Runner, volumetric fog throughout the scene"
+- **Categories:** ""
+
+**Output:**
+{
+  "ParsedParts": {
+    "Style": "cyberpunk, in the style of Blade Runner",
+    "Subject": "street vendor",
+    "Setting": "street",
+    "Composition": "shot from a low angle",
+    "Lighting": "illuminated by neon signs",
+    "Other": "volumetric fog throughout the scene"
+  }
+}
+
+
+
+**Input Variables:**
+- **InputText:** "Watercolor painting of a majestic oak tree at sunset, branches silhouetted against an orange sky, wide composition with rule of thirds"
+- **Categories:** ""
+
+**Output:**
+{
+  "ParsedParts": {
+    "Style": "Watercolor painting",
+    "Subject": "majestic oak tree",
+    "Setting": "sunset",
+    "Composition": "wide composition with rule of thirds",
+    "Lighting": "branches silhouetted against an orange sky",
+    "Other": ""
+  }
+}
+
+
+**Input Variables:**
+- **InputText:** "Highly detailed digital art of a steampunk mechanical butterfly, macro photography, soft ambient lighting, floating in a Victorian laboratory"
+- **Categories:** ""
+
+**Output:**
+{
+  "ParsedParts": {
+    "Style": "Highly detailed digital art, steampunk",
+    "Subject": "Floating Steampunk mechanical butterfly",
+    "Setting": "Victorian laboratory",
+    "Composition": "macro photography",
+    "Lighting": "soft ambient lighting",
+    "Other": ""
+  }
+}
+
+
+
+**Input Variables:**
+- **InputText:** "A hyperrealistic oil painting in the style of Rembrandt depicting an ancient wizard's study filled with magical artifacts, dusty leather-bound books, and floating crystals. The scene is illuminated by warm candlelight casting dramatic shadows, with moonlight streaming through a gothic window. Extreme attention to detail, masterful use of chiaroscuro, golden hour atmosphere, 8k resolution, award-winning, featured on ArtStation"
+- **Categories:** ""
+
+**Output:**
+{
+  "ParsedParts": {
+    "Style": "hyperrealistic oil painting, in the style of Rembrandt, extreme attention to detail, masterful use of chiaroscuro, 8k resolution, award-winning, featured on ArtStation",
+    "Subject": "ancient wizard's study with magical artifacts, dusty leather-bound books, and floating crystals",
+    "Setting": "gothic interior",
+    "Composition": "",
+    "Lighting": "warm candlelight casting dramatic shadows, moonlight streaming through window, golden hour atmosphere",
+    "Other": ""
+  }
+}
+
+
+
+**Input Variables:**
+- **InputText:** "A surreal underwater scene inspired by Salvador Dali and Studio Ghibli, featuring a giant mechanical whale made of clockwork gears and brass pipes swimming through a coral reef made of melting pocket watches. Schools of origami fish dart between the gears while bioluminescent jellyfish float above. Shot with an ultra-wide lens, tilt-shift effect, chromatic aberration, ray traced global illumination, subsurface scattering on the coral, Octane render"
+- **Categories:** ""
+
+**Output:**
+{
+  "ParsedParts": {
+    "Style": "surreal, inspired by Salvador Dali and Studio Ghibli, ray traced global illumination, Octane render",
+    "Subject": "giant mechanical whale made of clockwork gears and brass pipes, schools of origami fish, bioluminescent jellyfish",
+    "Setting": "underwater, coral reef made of melting pocket watches",
+    "Composition": "ultra-wide lens, tilt-shift effect",
+    "Lighting": "bioluminescent",
+    "Other": "chromatic aberration, subsurface scattering on the coral"
+  }
+}
+
+[END EXAMPLES]
+
+[INPUT]
+**Input Variables:**
+- **InputText:** {{$input}}
+- **Categories:** {{$categories}}
+
+**Output:**
+

@@ -1,0 +1,38 @@
+{
+    "schema": 1,
+    "description": "Return a given number of variants of the",
+    "execution_settings": {
+        "default": {
+      "max_tokens": 4096,
+      "temperature": 0.1,
+      "top_p": 0.3,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "response_format": {"type": "json_object"}
+    }
+    },
+    "input_variables": 
+    [
+      {
+        "name": "input",
+        "description": "initial text to mutate",
+        "defaultValue": ""
+      },
+      {
+        "name": "num_variants",
+        "description": "number of variants to generate",
+        "defaultValue": 1
+      },
+      {
+        "name": "substring",
+        "description": "substring of the text to change",
+        "defaultValue": ""
+      },
+      {
+        "name": "mutation_level",
+        "description": "degree of variation from the original text, between 1 and 5",
+        "defaultValue": 1
+      }
+    ]
+    
+  }

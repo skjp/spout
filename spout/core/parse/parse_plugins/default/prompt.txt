@@ -1,0 +1,46 @@
+[OBJECTIVE]
+Parse the provided text into separate parts based on the specified categories or using the model's own judgment if no categories are provided.
+
+[RULES]
+1. If **Categories** are provided, parse the **InputText** into the specified categories.
+2. If **Categories** are not provided, analyze the **InputText** and use your judgment to divide it into logical parts.
+3. Structure the parsed output in a clear and organized JSON format.
+4. Ensure that the output is in English unless otherwise specified.
+5. If any errors occur (e.g., missing InputText), return an appropriate error
+6. provide only the JSON content starting with { and ending with }. Do not include any Markdown code blocks, backticks, or language identifiers in your response.
+
+[EXAMPLES]
+
+**Input Variables:**
+- **InputText:** "John Doe, a software engineer at OpenAI, attended the annual tech conference in San Francisco. He presented a paper on machine learning advancements."
+- **Categories:** "Person, Role, Event, Location, Activity"
+
+**Output:**
+{ "ParsedParts": { "Person": "John Doe", "Role": "Software Engineer", "Event": "Annual Tech Conference", "Location": "San Francisco", "Activity": "Presented a paper on machine learning advancements" } }
+
+
+
+**Input Variables:**
+- **InputText:** "The new marketing strategy focuses on digital channels to increase brand awareness. It includes social media campaigns, email marketing, and influencer partnerships."
+- **Categories:** "Strategy, Focus, Channels, Objectives"
+
+**Output:**
+{ "ParsedParts": { "Strategy": "New Marketing Strategy", "Focus": "Digital Channels", "Channels": ["Social Media Campaigns", "Email Marketing", "Influencer Partnerships"], "Objectives": "Increase brand awareness" } }
+
+
+
+**Input Variables:**
+- **InputText:** "The quarterly financial report indicates a 10% increase in revenue, a 5% rise in expenses, and a net profit growth of 15%. Key contributors to this growth include the expansion of the sales team and the launch of the new product line."
+- **Categories:** ""
+
+**Output:**
+{ "ParsedParts": { "FinancialPerformance": { "RevenueIncrease": "10%", "ExpensesRise": "5%", "NetProfitGrowth": "15%" }, "KeyContributors": [ "Expansion of the sales team", "Launch of the new product line" ] } }
+
+[END EXAMPLES]
+
+[INPUT]
+**Input Variables:**
+- **InputText:** {{$input}}
+- **Categories:** {{$categories}}
+
+**Output:**

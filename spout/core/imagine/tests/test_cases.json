@@ -1,0 +1,47 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_planning",
+      "spoutlet": "default",
+      "parameters": {
+        "objective": "Design a website",
+        "context": "Small business, modern design",
+        "output-format": "JSON with each step defined in an array; each step has a Description field only",
+        "stipulations": "Must include 7 steps. Keep descriptions brief and actionable."
+      },
+      "expected_pattern": "(?s)\\{\\s*\"Plan\"\\s*:\\s*\\[.*?\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "detailed_planning",
+      "spoutlet": "default",
+      "parameters": {
+        "objective": "Plan a marketing campaign",
+        "context": "New product launch, B2B focus",
+        "output-format": "JSON with each step defined in an array; each step has Description and Details fields",
+        "stipulations": "Must include 5 steps. Provide comprehensive details for each step."
+      },
+      "expected_pattern": "(?s)\\{\\s*\"Plan\"\\s*:\\s*\\[.*?\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "outline_example",
+      "spoutlet": "outline",
+      "parameters": {
+        "objective": "Write Analysis a 5 part section of essay about Industrial Revolution's impact on American society",
+        "context": "Analysis section of essay about Industrial Revolution's impact on American society",
+        "output-format": "JSON with argument structure; each part has a main point and supporting evidence guidelines as a historical essay would have",
+        "stipulations": "Use academic tone, Connect to broader historical themes"
+      },
+      "expected_pattern": "(?s)\\{\\s*\"Plan\"\\s*:\\s*\\[.*?\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

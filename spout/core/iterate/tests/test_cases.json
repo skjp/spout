@@ -1,0 +1,37 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_iteration",
+      "spoutlet": "default",
+      "parameters": {
+        "example-preprocessed-line": "data: 123",
+        "example-processed-line": "123",
+        "description": "Extract number",
+        "preprocessed-lines": "data: 456\\ndata: 789",
+        "lines-per-call": "2"
+      },
+      "expected_pattern": "\\{\\s*\"processed_items\"\\s*:\\s*\\[.*?\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "name_formatting",
+      "spoutlet": "default", 
+      "parameters": {
+        "example-preprocessed-line": "John Doe",
+        "example-processed-line": "Doe, J.",
+        "description": "Format as last name, first initial",
+        "preprocessed-lines": "Jane Smith\\nBob Johnson",
+        "lines-per-call": "2"
+      },
+      "expected_pattern": "\\{\\s*\"processed_items\"\\s*:\\s*\\[.*?\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}
+

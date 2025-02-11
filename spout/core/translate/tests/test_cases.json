@@ -1,0 +1,41 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_translation",
+      "spoutlet": "default",
+      "parameters": {
+        "specification": "Spanish",
+        "input": "Hello world! How are you today?"
+      },
+      "expected_pattern": "^[a-zA-Z0-9\\s¡!¿?.,áéíóúñÁÉÍÓÚÑ]+$",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "style_translation", 
+      "spoutlet": "default",
+      "parameters": {
+        "specification": "Shakespearean style",
+        "input": "The weather is nice today."
+      },
+      "expected_pattern": "^[a-zA-Z0-9\\s!?.,]+$",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "code_translation",
+      "spoutlet": "code",
+      "parameters": {
+        "specification": "Python",
+        "input": "function sayHello() { console.log('Hello!'); }"
+      },
+      "expected_pattern": "^[\\s\\S]*def[\\s\\S]*print[\\s\\S]*$",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spout"
+version = "0.8.0"
+description = "A CLI tool for using AI models in a modular way"
+readme = "Readme.md"
+authors = [
+    {name = "Schuyler J Sloane", email = "mail@spout.dev"},
+]
+requires-python = ">=3.8"
+license = {text = "Apache 2.0"}
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "click>=8.0.0",
+    "pyperclip>=1.8.0",
+    "asyncio",
+    "openai>=1.0.0",
+    "replicate",
+    "google-generativeai>=0.3.0",
+    "anthropic>=0.5.0",
+    "tiktoken",
+    "configparser",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/skjp/spout"
+"Bug Tracker" = "https://github.com/skjp/spout/issues"
+
+[project.scripts]
+spout = "spout.spout_cli:cli"
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+]
+ignore = [
+    "E501",
+    "E722",
+    "F403",
+    "F405",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.setuptools]
+packages = ["spout"] 

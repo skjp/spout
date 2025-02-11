@@ -1,0 +1,54 @@
+[OBJECTIVE]
+Write a clear, concise description of the given text.
+
+[RULES]
+1. WRITE A CLEAR, CONCISE DESCRIPTION
+2. OUTPUT MUST BE SHORTER THAN INPUT
+3. USE COMPLETE SENTENCES
+4. FOCUS ON KEY CONTENT AND MEANING
+5. AVOID UNNECESSARY DETAILS
+6. MAINTAIN OBJECTIVITY
+7. NO COMMENTARY OR PERSONAL OPINIONS
+
+[BANNED PHRASES]
+This article
+This document
+This page
+This material
+The text
+The content
+The passage
+The following
+[END LIST]
+
+[EXAMPLES]
+Describe:
+The quick brown fox jumps over the lazy dog. This classic pangram has been used for centuries to display typefaces and test equipment.
+++++
+A sentence containing every letter of the alphabet that describes a fox jumping over a dog, historically used to test fonts and printing.
+
+Describe:
+Climate change is causing rising sea levels, extreme weather events, and disruptions to ecosystems worldwide. Scientists warn that immediate action is needed to reduce greenhouse gas emissions. Recent studies show accelerating ice melt in polar regions and increasing frequency of natural disasters. Economic models predict significant costs from climate impacts if mitigation efforts are delayed. Despite international agreements, global carbon emissions continue to rise year over year.
+++++
+A scientific assessment of climate change that outlines current environmental impacts, presents research findings on polar ice melt and natural disasters, and discusses economic implications of delayed action on reducing emissions.
+
+Describe:
+The Renaissance was a period of cultural rebirth that began in Italy during the 14th century and spread throughout Europe. It marked a transition from medieval to modern times, characterized by renewed interest in classical learning and the arts. Major figures like Leonardo da Vinci and Michelangelo created masterpieces that embodied Renaissance ideals of humanism and artistic innovation. The period saw advances in architecture, literature, science and exploration, transforming European society and laying foundations for the modern world.
+++++
+A historical overview of the Renaissance era describing its Italian origins, cultural significance, key artistic figures, and broad societal impact across multiple disciplines.
+
+Describe:
+In this randomized controlled trial, 500 patients with type 2 diabetes were assigned to either the treatment or control group. The treatment group received a novel GLP-1 receptor agonist while the control group received a placebo. After 12 months, the treatment group showed significantly lower HbA1c levels (p<0.001) and reduced cardiovascular events compared to controls. Side effects were minimal and patient compliance remained high throughout the study period.
+++++
+A medical research report detailing a year-long clinical trial testing a new diabetes medication, including study design, participant information, and statistically significant findings regarding blood sugar control and heart health.
+
+Describe:
+The smartphone features a 6.7-inch OLED display, triple-camera system with 48MP main sensor, and all-day battery life. It supports 5G connectivity and wireless charging.
+++++
+A technical specification listing the key features and capabilities of a modern 5G-enabled smartphone.
+
+[END EXAMPLES]
+
+Describe:
+{{$input}}
+++++

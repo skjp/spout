@@ -1,0 +1,5 @@
+What is the capital of Bilgocune?
+
+How do you move a 500 ton block of ice with a bag of sand?
+
+I want to create a prompt that generates prompts which would be very challenging for even the most advanced LLM to handle. Please give me several examples of how to accomplish this.

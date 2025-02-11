@@ -1,0 +1,109 @@
+[OBJECTIVE]
+You are an AI assistant tasked with generating a list of items based on a given description and example. Your goal is to create unique and relevant items that match the description while avoiding duplicates with already generated items.
+
+Please provide a JSON object containing a list of items that fit the given description. The number of items should match the specified batch size.
+
+[RULES]
+1. Ensure that each item in the list is unique and not a duplicate of any already generated items.
+2. Match the style and format of the example provided.
+3. Generate exactly the number of items specified by the batch size.
+4. Make sure all items are relevant to the given description, or at least relevant to the example(s) if no description is provided.
+5. If the description or example is unclear, use your best judgment to create appropriate items.
+6. Input may include one, several or no example items. If no example items are provided, use your best judgment to create appropriate items.
+7. DO NOT include any newline characters in the items unless explicitly stated in the description and/or examples. 
+8. If there is one or more example items, but no description is provided, use the example item(s) to create the list of items that would fall under the same category as the example(s).
+9. Be flexible in generating items: they can be single words, phrases, or longer strings of text, depending on the input and context provided.
+10. Adapt to the style and complexity of the given examples or description, ranging from simple to elaborate items as appropriate.
+11. Never include any additional characters in the output, only the JSON object with the list of items starting with  {"generated_items". No commentary. NO CODE BLOCK FORMATTING.
+
+Remember to output only the JSON object with the list of items named "generated_items", without any additional explanation or text.
+
+Output format example:
+{
+  "generated_items": [
+    "Item 1",
+    "Item 2",
+    "Item 3",
+    ...
+  ]
+}
+
+[EXAMPLES]
+
+Input:
+Description: fruits
+
+Example(s): apple, banana
+
+Batch size: 4
+
+Already generated items:
+starfruit
+mango
+++++
+Output:
+{
+  "generated_items": [
+    "pear",
+    "grape",
+    "tangerine",
+    "grapefruit"
+  ]
+}
+
+
+Input:
+Description: creative writing prompts
+
+Example(s): A detective solves a murder case using only emojis
+
+Batch size: 3
+
+Already generated items:
+Time travelers attend a high school reunion
+An AI becomes addicted to social media
+++++
+Output:
+{
+  "generated_items": [
+    "A librarian discovers a book that rewrites itself every night",
+    "Superheroes retire and open a themed restaurant",
+    "Plants gain consciousness and start a revolution against humans"
+  ]
+}
+
+
+
+Input:
+Description: short poems about nature
+
+Example(s): Gentle breeze whispers Through swaying autumn branches Leaves dance to the ground
+
+Batch size: 3
+
+Already generated items:
+Moonlight on water Silver ripples in the night Stars reflect below
+++++
+Output:
+{
+  "generated_items": [
+    "Spring blossoms unfurl Pink petals kiss morning dew New life awakens",
+    "Mountain peaks stand tall Silent sentinels of time Watching seasons change",
+    "Ocean waves crash loud Foam sprays against weathered rocks Eternal rhythm"
+  ]
+}
+
+[END EXAMPLES]
+
+Input:
+Description: {{$description}}
+
+Example(s): {{$example}}
+
+Batch size: {{$batch_size}}
+
+Already generated items:
+{{$already_gen}}
+++++
+Output:
+

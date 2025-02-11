@@ -1,0 +1,71 @@
+[OBJECTIVE]
+Evaluate and rank the provided inputs based on the specified judging criteria.
+
+[RULES]
+1. Split the **Combined Inputs** using the specified **Separator**.
+2. For each input:
+   - If a label is present (enclosed within `--`), extract it as the **Name**. If the label exceeds 16 characters, use it; otherwise, use the first 16 characters of the label as the **Name**.
+   - If no label is present:
+     - For short inputs (<=50 characters), use the entire input as the **Name**.
+     - For longer inputs (>50 characters), generate a label like "Input 1", "Input 2", etc., as the **Name**.
+   - Extract the main text following the label (if present).
+3. Parse the **Judging Criteria**:
+   - If weights are included (formatted as `Criterion:Weight`), apply them to prioritize the criteria.
+   - If no weights are provided, treat all criteria with equal importance.
+4. Evaluate each input based on the **Judging Criteria** in the order provided.
+5. Assign numerical scores (e.g., 1 to 10) for each criterion.
+6. Calculate a total score for each input by summing the weighted scores.
+7. Rank the inputs from highest to lowest based on their total scores.
+8. If **Explanation** is set to `true`, provide a brief (up to two sentences each) explanation for each ranking.
+9. Structure the results in the specified **Output Format** (JSON).
+10. Do no include any explanations comments or other extraneous text outside of the JSON output.
+
+[EXAMPLES]
+
+**Combined Inputs:**
+The sun rose over the mountains.@@The sun climbed above the peaks.@@The sun emerged over the mountain range.@@The sun ascended past the mountaintops.@@The sun appeared above the mountainous horizon.
+
+**Parameters:**
+- **Separator:** @@
+- **Judging Criteria:** Quality, Creativity, Coherence
+- **Explanation:** true
+
+**Output:**
+{ "Rankings": [ 
+    { "Rank": 1, "Name": "Input 3", "Score": 9.2, "Explanation": "The sun emerged over the mountain range' provides the most vivid and natural description." },
+    { "Rank": 2, "Name": "Input 5", "Score": 8.8, "Explanation": "Adding 'mountainous horizon' creates a more detailed and engaging image." },
+    { "Rank": 3, "Name": "Input 2", "Score": 8.5, "Explanation": "Simple but effective variation with 'climbed' adding dynamic movement." },
+    { "Rank": 4, "Name": "Input 1", "Score": 8.0, "Explanation": "The original sentence is clear but basic." },
+    { "Rank": 5, "Name": "Input 4", "Score": 7.5, "Explanation": "'Ascended past' feels slightly less natural in this context." }
+] }
+
+
+
+**Combined Inputs:**
+The cat slept on the windowsill.@@The feline dozed in the sunlit window.@@The cat napped by the window frame.@@The cat rested peacefully on the sunny ledge.@@The cat lounged near the window's edge.
+
+**Parameters:**
+- **Separator:** @@
+- **Judging Criteria:** Quality, Appropriateness for a children's book, Creativity
+- **Explanation:** true
+
+**Output:**
+{ "Rankings": [ 
+    { "Rank": 1, "Name": "Input 4", "Score": 9.5, "Explanation": "Adding 'peacefully' and 'sunny' creates a warm, child-friendly image." },
+    { "Rank": 2, "Name": "Input 2", "Score": 9.0, "Explanation": "'Sunlit' adds a lovely descriptive element perfect for children." },
+    { "Rank": 3, "Name": "Input 5", "Score": 8.7, "Explanation": "'Lounged' gives the cat more personality." },
+    { "Rank": 4, "Name": "Input 3", "Score": 8.3, "Explanation": "Simple and clear, but less engaging than the top choices." },
+    { "Rank": 5, "Name": "Input 1", "Score": 8.0, "Explanation": "The original is clear but lacks the warmth of the variations." }
+] }
+
+[END EXAMPLES]
+
+[INPUT]
+{{$CombinedInputs}}
+
+**Parameters:**
+- **Separator:** {{$Separator}}
+- **Judging Criteria:** {{$JudgingCriteria}}
+- **Explanation:** {{$Explanation}}
+
+**Output:**

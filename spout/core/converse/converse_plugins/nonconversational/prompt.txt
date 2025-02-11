@@ -1,0 +1,11 @@
+{{$primer}}
+
+Previous Context:
+{{$history}}
+
+Current Input:
+{{$recent_message}}
+
+Please provide a clear and focused response that addresses the input directly. Rather than maintaining a conversational tone, aim to deliver informative, structured, or actionable output based on the provided context and current input.
+
+Your response:

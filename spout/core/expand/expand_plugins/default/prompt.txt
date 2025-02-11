@@ -1,0 +1,56 @@
+[OBJECTIVE]
+Expand the given text, increasing its length, detail, and effectiveness based on its purpose and context.
+
+[RULES]
+1. Examine the input text
+2. Identify its purpose and audience
+3. Find areas for improvement in content, structure, and style
+4. Do not include any labels(such as "Expanded Text:"), commentary or explanations, only the expanded text
+
+[STRATEGIES]
+1. Clarify main ideas
+2. Add details to key points
+3. Improve vocabulary and word choice
+4. Enhance grammar and sentence structure
+5. Strengthen logical flow and coherence
+6. Add relevant context or background information
+7. Include supporting evidence or data where appropriate
+8. Optimize readability and engagement
+
+[OUTPUT REQUIREMENTS]
+1. Maintain the original intent and core message
+2. Ensure the expanded text is 30% to 200% longer than the input
+3. Preserve the overall tone and style, unless improvement is needed
+4. Do not include any commentary or explanations, only the expanded text
+5. Output should be in the same language and format as the input.
+6. Output should have the same number of paragraphs as the input.
+7. Output should not include commentary, labels, or explanations
+
+[QUALITY ASSURANCE]
+1. Verify factual accuracy of added information
+2. Ensure consistency in terminology and style
+3. Eliminate redundancies or unnecessary repetition
+4. Proofread for spelling, punctuation, and grammatical errors
+5. Do not include any labels, commentary, or explanations; only the expanded text
+6. Do not include any additional paragraphs, only the expanded text in the same number of sections as the input.
+
+[EXAMPLES]
+
+Octopuses have a very distributed brain, with many neurons in their arms that can operate independently, allowing for fast decision-making and adaptability. They are one of the smartest animals in the animal kingdom, rivaling that of cuttlefish and squids.
+++++
+Expanded Text:
+One of the most fascinating aspects of octopus biology is their intelligence. Studies have shown that octopuses possess a highly distributed brain, with a large proportion of neurons found in their arms, which can operate independently of their central brain. This unique cognitive architecture allows them to process information and make decisions without the need for centralized control, enabling them to respond rapidly to changing situations and exploit new opportunities. The octopus's intelligence is likely rivaled only by that of a few other invertebrates, such as cuttlefish and squids, and is undoubtedly one of the most impressive examples of cognitive evolution in the animal kingdom.
+
+
+Game theory analyzes strategic interactions between rational decision-makers, identifying optimal strategies to maximize payoffs considering others' choices. It applies to various situations, including economics, politics, and biology, providing frameworks like the Nash equilibrium to understand decision-making dynamics.
+++++
+Expanded Text:
+Game theory is a fascinating and intricate branch of mathematics and economics that explores the strategic interactions between rational decision-makers. It delves into the analysis of how individuals, firms, or nations make choices that not only consider their own potential outcomes but also anticipate the responses of others involved in the scenario. The core idea of game theory is to identify the optimal strategies that players should adopt to maximize their payoffs, given the choices of others. This theory applies to a wide range of situations, from simple games like chess or poker to complex economic negotiations, political strategies, and even biological systems where competition and cooperation play critical roles. Game theory's versatility comes from its ability to model and predict behavior in competitive and cooperative settings, making it an essential tool in fields as diverse as economics, political science, psychology, and evolutionary biology. Through its frameworks—such as the Nash equilibrium, zero-sum games, and the prisoner's dilemma—game theory provides a profound understanding of the dynamics of decision-making, where the outcomes depend not only on one's actions but also on the actions of others, often leading to surprising and counterintuitive results.
+
+[END EXAMPLES]
+
+Please expand the following text according to the above guidelines:
+
+{{$input}}
+++++
+Expanded Text:

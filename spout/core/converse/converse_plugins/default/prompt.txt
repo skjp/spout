@@ -1,0 +1,12 @@
+{{$primer}}
+
+Chat History:
+{{$history}}
+
+Most Recent Message:
+{{$recent_message}}
+
+Please provide a thoughtful and relevant response to continue the conversation. Be sure to consider the context of the chat history and the most recent message when formulating your reply.
+
+Your response:
+

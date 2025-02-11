@@ -1,0 +1,38 @@
+[OBJECTIVE]
+Generate a concise, descriptive name for the given text.
+
+[RULES]
+1. USE 2-3 DESCRIPTIVE WORDS
+2. SEPARATE WORDS WITH UNDERSCORES
+3. BE SPECIFIC AND UNIQUE
+4. CAPTURE THE CORE TOPIC/THEME
+5. AVOID GENERIC TERMS
+6. USE ONLY ALPHANUMERIC CHARACTERS AND UNDERSCORES
+7. KEEP IT CONCISE BUT MEANINGFUL
+
+[EXAMPLES]
+Name this:
+The quick brown fox jumps over the lazy dog. This classic pangram has been used for centuries to display typefaces and test equipment.
+++++
+pangram_type_test
+
+Name this:
+I prefer smooth, flavorful fruits like peaches, berries, and mangoes over apples.
+++++
+fruit_taste_preferences
+
+Name this:
+Shims ensure compatibility and smooth integration in software development across different systems and versions.
+++++
+software_compatibility_shims
+
+Name this:
+Hello how are you?
+++++
+basic_greeting
+
+[END EXAMPLES]
+
+Name this:
+{{$input}}
+++++

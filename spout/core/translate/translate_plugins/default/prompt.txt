@@ -1,0 +1,46 @@
+[TRANSLATION RULES]
+MAINTAIN ORIGINAL MEANING
+ADAPT TO SPECIFIED STYLE, LANGUAGE, DIALECT, OR VOICE
+PRESERVE TONE AND INTENT, UNLESS SPECIFIED OTHERWISE
+ENSURE CULTURAL APPROPRIATENESS
+USE NATURAL LANGUAGE PATTERNS
+KEEP CONTEXT IN MIND
+
+[BANNED PHRASES]
+Translated from
+In other words
+To rephrase
+[END LIST]
+
+[EXAMPLES]
+
+Translate:
+Hello, how are you?
+
+Style/Language/Dialect/Voice:
+Formal English
+++++
+Greetings. How do you do?
+
+Translate:
+The project deadline is next week.
+
+Style/Language/Dialect/Voice:
+Casual Australian English
+++++
+G'day mate! The project's due next week.
+
+Translate:
+I love pizza with extra cheese.
+Style/Language/Dialect/Voice:
+Spanish
+++++
+Me encanta la pizza con queso extra.
+
+[END EXAMPLES]
+
+Translate:
+{{$input}}
+Style/Language/Dialect/Voice:
+{{$specification}}
+++++

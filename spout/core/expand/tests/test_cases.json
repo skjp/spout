@@ -1,0 +1,48 @@
+{
+    "test_cases": [
+        {
+            "name": "basic_expansion",
+            "spoutlet": "default",
+            "parameters": {
+                "input": " paragraph about a cat."
+            },
+            "expected_pattern": "^[\\s\\S]{200,3000}$",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "detailed_expansion",
+            "spoutlet": "default",
+            "parameters": {
+                "input": "How a bicycle works."
+            },
+            "expected_pattern": "^[\\s\\S]{200,5000}$",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "outline_expansion",
+            "spoutlet": "fill",
+            "parameters": {
+                "input": "The trampoline is something that can be used for [ ]."
+            },
+            "expected_pattern": "^[\\s\\S]{100,4000}$",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "develop_expansion",
+            "spoutlet": "develop",
+            "parameters": {
+                "input": "[several paragraphs about history of trampolines] (focus on the development of the trampoline as a recreational activity) {talk about the inventor and use an academic tone.}"
+            },
+            "expected_pattern": "^[\\s\\S]{100,5000}$",
+            "timeout": 30,
+            "sample": true
+        }
+    ],
+    "global_settings": {
+        "default_timeout": 30,
+        "default_model": "gpt-3.5-turbo"
+    }
+}

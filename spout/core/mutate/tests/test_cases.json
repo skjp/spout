@@ -1,0 +1,70 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_mutation",
+      "spoutlet": "default",
+      "parameters": {
+        "input": "The quick brown fox jumps over the lazy dog",
+        "num_variants": 2,
+        "mutation_level": 1
+      },
+      "expected_pattern": "(?s).*\\{.*\\[.*\\].*\\}.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "substring_mutation",
+      "spoutlet": "default", 
+      "parameters": {
+        "input": "The scientist conducted groundbreaking research",
+        "substring": "conducted groundbreaking research",
+        "num_variants": 3,
+        "mutation_level": 3
+      },
+      "expected_pattern": "(?s).*\\{.*\\[.*\\].*\\}.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "high_mutation",
+      "spoutlet": "default",
+      "parameters": {
+        "input": "Hello world",
+        "num_variants": 2,
+        "mutation_level": 5
+      },
+      "expected_pattern": "(?s).*\\{.*\\[.*\\].*\\}.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "image_mutation",
+      "spoutlet": "imagegen",
+      "parameters": {
+        "input": "A beautiful sunset over mountains",
+        "num_variants": 2,
+        "mutation_level": 2
+      },
+      "expected_pattern": "(?s).*\\{.*\\[.*\\].*\\}.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "image_substring_mutation",
+      "spoutlet": "imagegen",
+      "parameters": {
+        "input": "A red car driving through a forest",
+        "substring": "red car",
+        "num_variants": 3,
+        "mutation_level": 4
+      },
+      "expected_pattern": "(?s).*\\{.*\\[.*\\].*\\}.*",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

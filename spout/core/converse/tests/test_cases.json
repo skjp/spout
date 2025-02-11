@@ -1,0 +1,52 @@
+{
+  "test_cases": [
+    {
+      "name": "basic-conversation",
+      "spoutlet": "default",
+      "parameters": {
+        "primer": "You are a helpful assistant",
+        "recent-message": "Hello"
+      },
+      "expected_pattern": "(?is).*(help|assist|hi|how can|can you).*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "coding-tutor",
+      "spoutlet": "default",
+      "parameters": {
+        "primer": "You are a Python coding tutor",
+        "recent-message": "How do I create a list in Python?"
+      },
+      "expected_pattern": "(?is).*list.*\\[.*\\].*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "with-history",
+      "spoutlet": "default",
+      "parameters": {
+        "primer": "You are a helpful assistant",
+        "recent-message": "What was my previous question?"
+      },
+      "expected_pattern": "(?is).*previous.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "nonconversational-response",
+      "spoutlet": "nonconversational",
+      "parameters": {
+        "primer": "You are a direct question answerer",
+        "recent-message": "What is 2+2?"
+      },
+      "expected_pattern": "(?is).*4.*",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

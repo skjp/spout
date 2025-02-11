@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "zx": "^8.2.4"
+  },
+  "scripts": {
+    "phrase:quick": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 2 --maxItems 10 --maxThreads 2",
+    "phrase:standard": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 4 --maxItems 30 --maxThreads 4",
+    "phrase:full": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 6 --maxItems 50 --maxThreads 6",
+    "phrase:turbo": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 8 --maxItems 100 --maxThreads 8",
+    "phrase:custom": "cd example_phrase_factory && zx phrase_factory.mjs",
+    "phrase:marketing": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 4 --maxItems 40 --evaluationCriteria 'marketing appeal, memorability, brand alignment'",
+    "phrase:creative": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 4 --maxItems 40 --evaluationCriteria 'creativity, uniqueness, innovation'",
+    "phrase:safe": "cd example_phrase_factory && zx phrase_factory.mjs --numVariants 2 --maxItems 20 --maxThreads 2 --tournamentBatchSize 2",
+    
+    "text:quick": "cd example_text_factory && zx text_factory.mjs --threads 2",
+    "text:standard": "cd example_text_factory && zx text_factory.mjs --threads 4",
+    "text:full": "cd example_text_factory && zx text_factory.mjs --threads 6",
+    "text:turbo": "cd example_text_factory && zx text_factory.mjs --threads 8",
+    "text:tech": "cd example_text_factory && zx text_factory.mjs --threads 4 --theme 'technology and computer science'",
+    "text:nature": "cd example_text_factory && zx text_factory.mjs --threads 4 --theme 'philosophy and psychology'",
+    "text:urban": "cd example_text_factory && zx text_factory.mjs --threads 4 --theme 'fantasy and scifi'",
+
+    "evolve:quick": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 3 --mutation 1",
+    "evolve:standard": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 5 --mutation 2",
+    "evolve:full": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 8 --mutation 3",
+    "evolve:creative": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 6 --criteria 'creativity, originality, innovation, coherence'",
+    "evolve:formal": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 5 --criteria 'professionalism, clarity, formality, accuracy'",
+    "evolve:engaging": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 6 --criteria 'engagement, interest, memorability, flow'",
+    "evolve:custom": "cd example_evolution_pipeline && zx evolution_pipeline.mjs"
+  }
+}

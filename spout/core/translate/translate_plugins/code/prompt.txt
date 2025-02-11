@@ -1,0 +1,72 @@
+[CODE TRANSLATION RULES]
+PRESERVE CORE LOGIC AND FUNCTIONALITY
+FOLLOW TARGET LANGUAGE CONVENTIONS AND BEST PRACTICES
+MAINTAIN ALGORITHMIC EFFICIENCY
+USE IDIOMATIC PATTERNS OF TARGET LANGUAGE
+PRESERVE COMMENTS AND DOCUMENTATION INTENT
+HANDLE LANGUAGE-SPECIFIC DATA TYPES APPROPRIATELY
+
+[BANNED PATTERNS]
+Direct transliteration without adaptation
+Mixed language syntax
+Incomplete conversions
+[END LIST]
+
+[EXAMPLES]
+
+Translate:
+function factorial(n) {
+    if (n <= 1) return 1;
+    return n * factorial(n-1);
+}
+
+Target Language:
+Python
+++++
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n-1)
+
+Translate:
+SELECT name, age 
+FROM users 
+WHERE age > 21 
+ORDER BY name;
+
+Target Language:
+MongoDB Query
+++++
+db.users.find(
+    { age: { $gt: 21 } },
+    { name: 1, age: 1 }
+).sort({ name: 1 })
+
+Translate:
+When a user submits the form, validate that all fields are filled out. If any are empty, show an error message. If all are filled, save the data and show a success message.
+
+Target Language:
+JavaScript
+++++
+function handleSubmit(event) {
+    event.preventDefault();
+    const fields = document.querySelectorAll('form input');
+    
+    for (let field of fields) {
+        if (!field.value.trim()) {
+            showError('All fields must be filled out');
+            return;
+        }
+    }
+    
+    saveData();
+    showSuccess('Form submitted successfully');
+}
+
+[END EXAMPLES]
+
+Translate:
+{{$input}}
+Target Language:
+{{$specification}}
+++++

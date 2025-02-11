@@ -1,0 +1,28 @@
+{
+    "schema": 1,
+    "description": "Translate the given text to the specified language, style, or dialect",
+    "execution_settings": {
+        "default": {
+      "max_tokens": 4096,
+      "temperature": 0.1,
+      "top_p": 0.3,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+        }
+    },
+    "input_variables": 
+       [
+        {
+          "name": "input",
+          "description": "Text to translate",
+          "defaultValue": ""
+        },
+        {
+          "name": "specification",
+          "description": "language, style, or dialect to translate to",
+          "defaultValue": "formal english"
+        }
+      ]
+    
+  }
+  

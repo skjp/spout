@@ -1,0 +1,48 @@
+{
+    "test_cases": [
+        {
+            "name": "basic_enhancement",
+            "spoutlet": "default",
+            "parameters": {
+                "input": "The meeting is at 3pm."
+            },
+            "expected_pattern": "^[\\s\\S]{20,500}$",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "detailed_enhancement",
+            "spoutlet": "default",
+            "parameters": {
+                "input": "I need to explain the process of photosynthesis."
+            },
+            "expected_pattern": "^[\\s\\S]{30,1500}$",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "jazz_basic",
+            "spoutlet": "jazz",
+            "parameters": {
+                "input": "The cat sat on the mat."
+            },
+            "expected_pattern": "^[\\s\\S]{30,500}$",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "jazz_complex",
+            "spoutlet": "jazz",
+            "parameters": {
+                "input": "The developer fixed the bug in the code."
+            },
+            "expected_pattern": "^[\\s\\S]{40,800}$",
+            "timeout": 30,
+            "sample": false
+        }
+    ],
+    "global_settings": {
+        "default_timeout": 30,
+        "default_model": "gpt-3.5-turbo"
+    }
+}

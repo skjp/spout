@@ -1,0 +1,99 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_evaluation",
+      "spoutlet": "default", 
+      "parameters": {
+        "combined-inputs": "The quick brown fox jumps over the lazy dog@@The slow white cat sleeps under the tall tree@@A red bird flies across the sunny sky",
+        "separator": "@@",
+        "judging-criteria": "grammar, spelling, word_choice",
+        "explanation": true
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "code_review",
+      "spoutlet": "default",
+      "parameters": {
+        "combined-inputs": "def add(x,y):\n  return x+y|||def sum(a,b):\n    result = a + b\n    return result|||def addition(num1,num2):\n  sum = num1+num2\n  return sum",
+        "separator": "|||",
+        "judging-criteria": "style, efficiency, best_practices",
+        "explanation": false
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "writing_assessment", 
+      "spoutlet": "writing",
+      "parameters": {
+        "combined-inputs": "This essay discusses the impact of technology on modern society.<SEP>Technology has revolutionized how we live and work today.<SEP>The digital age has transformed human interaction and productivity.",
+        "separator": "<SEP>",
+        "judging-criteria": "clarity, structure, argument_strength",
+        "explanation": false
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "technical_writing",
+      "spoutlet": "writing",
+      "parameters": {
+        "combined-inputs": "The system architecture consists of three main components.##The application is built using a microservices approach.##The platform leverages cloud-native technologies.",
+        "separator": "##",
+        "judging-criteria": "accuracy, completeness, technical_detail",
+        "explanation": true
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "comma_separator",
+      "spoutlet": "default",
+      "parameters": {
+        "combined-inputs": "Option A: Increase marketing budget,Option B: Hire more staff,Option C: Expand product line",
+        "separator": ",",
+        "judging-criteria": "feasibility, cost_effectiveness, impact",
+        "explanation": false
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "semicolon_separator",
+      "spoutlet": "default",
+      "parameters": {
+        "combined-inputs": "The project was completed on time;The deliverables exceeded expectations;The client was satisfied with results",
+        "separator": ";",
+        "judging-criteria": "professionalism, achievement, client_satisfaction",
+        "explanation": true
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "newline_separator",
+      "spoutlet": "default",
+      "parameters": {
+        "combined-inputs": "First proposal draft\nSecond proposal draft\nThird proposal draft",
+        "separator": "\n",
+        "judging-criteria": "content_quality, formatting, persuasiveness",
+        "explanation": false
+      },
+      "expected_pattern": "(?is).*rank.*score.*",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

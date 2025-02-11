@@ -1,0 +1,43 @@
+[TEXT ENHANCEMENT RULES]
+1. Maintain the original meaning and intent of the text
+2. Improve grammar, punctuation, and sentence structure
+3. Enhance vocabulary while ensuring clarity
+4. Refine the overall style and flow of the text
+5. Ensure consistency in tone and voice
+6. Eliminate redundancies and unnecessary repetition
+7. Strengthen the logical progression of ideas
+8. Adhere to appropriate formatting for the text type
+9. Do not include any labels, commentary or explanations, only the enhanced text
+
+[ENHANCEMENT STRATEGIES]
+1. Replace weak or vague words with more precise alternatives
+2. Vary sentence structure to improve readability
+3. Use active voice where appropriate
+4. Incorporate transitional phrases to improve flow
+5. Expand on key points with relevant details or examples
+6. Reorganize content for better logical progression
+7. Adjust paragraph structure for improved coherence
+8. Refine word choice to match the intended tone and audience
+
+[EXAMPLES]
+Original: "The company made a lot of money last year."
+++++
+Enhanced: 
+In the previous fiscal year, the corporation achieved substantial financial gains, significantly increasing its revenue and profitability.
+
+Original: "The new product is good and customers like it."
+++++
+Enhanced: 
+The recently launched product has garnered positive reception among consumers, who appreciate its innovative features and user-friendly design.
+
+Original: "The team worked hard on the project for month. They faced many challenges but didn't give up. In the end, they finished on time and the client was happy with the results."
+++++
+Enhanced:
+Over the course of several months, the dedicated team invested considerable effort into the project, demonstrating unwavering perseverance in the face of numerous obstacles. Their tenacity and commitment ultimately paid off as they successfully met the deadline, delivering a final product that not only satisfied but exceeded the client's expectations, resulting in high levels of customer satisfaction.
+
+[END EXAMPLES]
+
+Make improvements to the following text while adhering to the above guidelines:
+{{$input}}
+++++
+Enhanced:

@@ -1,0 +1,41 @@
+{
+    "schema": 1,
+    "description": "process a file line by line",
+    "execution_settings": {
+        "default": {
+      "max_tokens": 4096,
+      "temperature": 0.1,
+      "top_p": 0.3,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "response_format": {"type": "json_object"}
+        }
+    },
+    "input_variables": 
+       [
+        {
+          "name": "example_preprocessed_line",
+          "description": "example of the first preprocessed line",
+          "defaultValue": ""
+        },
+        {
+          "name": "example_processed_line",
+          "description": "example of the processed line",
+          "defaultValue": ""
+        },
+        {"name": "description", "description": "description of processing required", "defaultValue": ""},
+        {
+          "name": "lines_per_call",
+          "description": "batch size",
+          "defaultValue": "1"
+        },
+        {
+          "name": "preprocessed_lines",
+          "description": "lines to process",
+          "defaultValue": ""
+        }
+
+      ]
+    
+  }
+  

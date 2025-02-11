@@ -1,0 +1,28 @@
+{
+    "test_cases": [
+        {
+            "name": "basic_search",
+            "spoutlet": "default",
+            "parameters": {
+                "input": "Paris is the capital and largest city of France. Lyon is the third largest city in France."
+            },
+            "expected_pattern": "(?is).*\"urls\":\\s*\\[.*,.*\\].*",
+            "timeout": 30,
+            "sample": true
+        },
+        {
+            "name": "multi_context_search", 
+            "spoutlet": "default",
+            "parameters": {
+                "input": "The common cold typically causes runny nose, congestion, and sneezing. Fever is more commonly associated with the flu than with colds. Cold symptoms usually appear gradually over a few days."
+            },
+            "expected_pattern": "(?is).*\"urls\":\\s*\\[.*,.*\\].*",
+            "timeout": 30,
+            "sample": true
+        }
+    ],
+    "global_settings": {
+        "default_timeout": 30,
+        "default_model": "gpt-3.5-turbo"
+    }
+}

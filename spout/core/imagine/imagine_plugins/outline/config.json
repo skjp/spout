@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "description": "Generate a structured creative writing outline that breaks down a work into detailed sections with specific guidelines for content generation. Supports various formats including novel chapters, essays, scripts, and other creative works.",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 4096,
+      "temperature": 0.1,
+      "top_p": 0.3,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "response_format": {"type": "json_object"}
+    }
+  },
+  "input_variables": [
+    {
+      "name": "objective",
+      "description": "The type and scope of the creative work (e.g., 'Write Chapter 3 of a science fiction novel', 'Create outline for historical essay', 'Design act structure for comedy play')",
+      "defaultValue": ""
+    },
+    {
+      "name": "context",
+      "description": "Background information about the creative work, including setting, previous events, established characters, themes, or research context that influences the outline",
+      "defaultValue": ""
+    },
+    {
+      "name": "output_format",
+      "description": "The structural format for the outline (e.g., 'JSON with sequential scenes', 'hierarchical chapter breakdown', 'scene-by-scene script outline')",
+      "defaultValue": "json"
+    },
+    {
+      "name": "stipulations",
+      "description": "Style guidelines, tone requirements, and specific elements that must be included in the outline (e.g., 'maintain suspense', 'include academic citations', 'focus on character development')",
+      "defaultValue": ""
+    }
+  ]
+}

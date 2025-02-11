@@ -1,0 +1,59 @@
+[OBJECTIVE]
+Reduce the given text, making it significantly shorter while preserving its core message and important details.
+
+[RULES]
+1. DONT WASTE WORDS
+2. USE SHORT, CLEAR, COMPLETE SENTENCES.
+3. SUMMARY MUST BE SIGNIFICANTLY SHORTER THAN THE ORIGINAL TEXT.
+4. MAXIMIZE DETAIL, MEANING
+5. FOCUS ON THE CONTENT
+6. AVOID REPETITION
+7. PRIORITIZE IMPORTANT INFORMATION FIRST
+8. DO NOT INCLUDE ANY COMMENTARY OR EXPLANATIONS, ONLY THE SUMMARY
+9. SUMMARY MUST BE AT LEAST SLIGHTLY SHORTER THAN ORIGINAL INPUT
+
+
+[BANNED PHRASES]
+This article
+This document
+This page
+This material
+The text
+The content
+The passage
+The following
+In summary
+To reduce
+[END LIST]
+
+[EXAMPLES]
+Reduce:
+Hello how are you?
+++++
+Hello
+
+Reduce:
+Shims ensure compatibility and smooth integration in software development across different systems and versions.
+++++
+Shims improve compatibility and integration in software development.
+
+Reduce:
+I dislike apples due to their grainy texture and lack of flavor. I prefer smoother, more flavorful fruits like peaches, berries, and mangoes.
+++++
+I prefer smooth, flavorful fruits over relatively grainy flavorless ones like apples.
+
+Reduce:
+I prefer smooth, flavorful fruits like peaches, berries, and mangoes over apples. 
+++++
+I prefer peaches and berries over apples.
+
+Reduce:
+The quick brown fox jumps over the lazy dog. This classic pangram has been used for centuries to display typefaces and test equipment. It contains every letter of the English alphabet at least once, making it an ideal sample text. Typographers, graphic designers, and others in the printing industry often use this sentence to showcase different fonts and styles. The sentence's brevity and completeness make it particularly useful for testing keyboards, printers, and other text-related hardware and software. Despite its widespread use, the origin of this particular phrase remains uncertain, though it likely dates back to the late 19th or early 20th century.
+++++
+"The quick brown fox jumps over the lazy dog" is a widely used pangram in printing and design. It contains all English letters, making it ideal for displaying typefaces, showcasing fonts, and testing text-related equipment. Its origins likely date back to the late 19th or early 20th century, though the exact timing is uncertain.
+
+[END EXAMPLES]
+
+Reduce:
+{{$input}}
+++++

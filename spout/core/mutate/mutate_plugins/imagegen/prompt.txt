@@ -1,0 +1,110 @@
+[TASK: GENERATE IMAGE PROMPT VARIANTS]
+
+[OBJECTIVE]
+Generate one or more variants of an image generation prompt by modifying a specified substring while maintaining overall coherence and exploring different artistic possibilities based on the 'Mutation Level' parameter (1-5).
+
+[INPUT]
+- Original prompt text (input)
+- Number of variants to generate (num_variants)
+- Substring to change (substring)
+- Mutation level (mutation_level)
+
+[OUTPUT]
+- JSON-formatted object containing:
+  - "substring": The original substring to be replaced
+  - "variants": An array of variant prompts (length equal to num_variants)
+- DO NOT include any output other than the JSON object. Do not output any additional text, explanation or comments.
+
+[INSTRUCTIONS]
+1. Carefully analyze the image prompt text
+2. Identify the specified substring within the prompt
+3. For each variant:
+   a. Replace the substring with contextually appropriate artistic alternatives
+   b. Ensure the replacement explores different visual possibilities
+   c. Maintain coherent prompt structure and compatibility with AI image generators
+4. Generate the specified number of variants
+5. Format the output as a JSON object
+6. DO NOT include any output other than the JSON object. Do not output any additional text, explanation or comments.
+
+[CONSIDERATIONS]
+- Focus on artistic elements like style, medium, lighting, composition, mood
+- Ensure replacements are compatible with AI image generation syntax
+- Maintain proper prompt structure and formatting
+- Consider how changes affect the overall visual outcome
+- Keep variants concise and clear for optimal generation results
+
+[EXAMPLES]
+
+Generate variants for the following text:
+Original text: A mystical forest at twilight, digital art, ethereal lighting
+Number of variants: 3
+Substring to change: digital art
+Mutation level: 1
+++++
+Output:
+{
+  "original": "digital art",
+  "variants": [
+    "oil painting",
+    "watercolor illustration",
+    "concept art"
+  ]
+}
+
+Generate variants for the following text:
+Original text: Portrait of a cyberpunk samurai, neon colors, blade runner style
+Number of variants: 2
+Substring to change: neon colors
+Mutation level: 3
+++++
+Output:
+{
+  "original": "neon colors",
+  "variants": [
+    "muted post-apocalyptic tones",
+    "iridescent holographic sheen"
+  ]
+}
+
+Generate variants for the following text:
+Original text: A steampunk cityscape with floating airships, cinematic lighting, 8k render
+Number of variants: 4
+Substring to change: steampunk cityscape
+Mutation level: 4
+++++
+Output:
+{
+  "original": "steampunk cityscape",
+  "variants": [
+    "solarpunk jungle metropolis",
+    "art deco underwater city",
+    "crystal-based alien settlement",
+    "biomechanical hive complex"
+  ]
+}
+
+Generate variants for the following text:
+Original text: A serene mountain lake at sunrise, style of Thomas Kinkade
+Number of variants: 3
+Substring to change: Thomas Kinkade
+Mutation level: 2
+++++
+Output:
+{
+  "original": "Thomas Kinkade",
+  "variants": [
+    "Albert Bierstadt",
+    "Bob Ross",
+    "Caspar David Friedrich"
+  ]
+}
+
+[END EXAMPLES]
+
+Generate variants for the following text:
+Original text: {{$input}}
+Number of variants: {{$num_variants}}
+Substring to change: {{$substring}}
+Mutation level: {{$mutation_level}}
+++++
+Output:

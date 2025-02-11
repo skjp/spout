@@ -1,0 +1,112 @@
+[TASK: GENERATE TEXT VARIANTS]
+
+[OBJECTIVE]
+Generate one or more variants of an initial text by modifying a specified substring while maintaining overall coherence and  altering the meaning or function of the output to the degree specified with the 'Mutation Level' parameter on a scale of 1-5.
+
+[INPUT]
+- Original text (input)
+- Number of variants to generate (num_variants)
+- Substring to change (substring)
+- Mutation level (mutation_level)
+
+[OUTPUT]
+- JSON-formatted object containing:
+  - "substring": The original substring to be replaced
+  - "variants": An array of variant texts (length equal to num_variants)
+- DO NOT include any output other than the JSON object. Do not output any additional text, explanation or comments.
+
+[INSTRUCTIONS]
+1. Carefully read and analyze the input text
+2. Identify the specified substring within the text
+3. For each variant:
+   a. Replace the substring with a new phrase that fits contextually
+   b. Ensure the replacement significantly alters the overall meaning or function of the text
+   c. Maintain grammatical correctness and coherence with the rest of the text
+4. Generate the specified number of variants
+5. Format the output as a JSON object
+6. DO NOT include any output other than the JSON object. Do not output any additional text, explanation or comments.
+
+[CONSIDERATIONS]
+- Aim for diverse and creative replacements that change the text's intent and/or implications in proportion to the mutation level number out of 5.
+- Ensure the new substring fits seamlessly within the surrounding text
+- Try to maintain the original text's style and tone, unless the change necessitates otherwise
+- Consider how the change affects the overall context and message of the text
+- Variants should not be more than 6 words longer than the original substring
+
+[EXAMPLES]
+
+Generate variants for the following text:
+Original text: The quick brown fox jumps over the lazy dog.
+Number of variants: 3
+Substring to change: jumps over
+Mutation level: 1
+++++
+Output:
+{
+  "original": "jumps over",
+  "variants": [
+    "jumps past",
+    "hops over",
+    "leaps beyond"
+  ]
+}
+
+Generate variants for the following text:
+Original text: The scientist conducted groundbreaking research on climate change.
+Number of variants: 2
+Substring to change: conducted groundbreaking research on
+Mutation level: 3
+++++
+Output:
+{
+  "original": "conducted groundbreaking research on",
+  "variants": [
+    "spread misinformation regarding",
+    "actively denied the existence of"
+  ]
+}
+
+Generate variants for the following text:
+Original text: The company's new product revolutionized the smartphone industry.
+Number of variants: 4
+Substring to change: revolutionized the smartphone industry
+Mutation level: 4
+++++
+Output:
+{
+  "original": "revolutionized the smartphone industry",
+  "variants": [
+    "caused widespread job losses in manufacturing",
+    "sparked a global privacy scandal",
+    "led to the collapse of several tech giants",
+    "was banned due to severe health risks"
+  ]
+}
+
+Generate variants for the following text:
+Original text: A young woman holding a bouquet of mountain ash. by John Singer Sargent
+Number of variants: 3
+Substring to change: John Singer Sargent
+Mutation level: 2
+++++
+Output:
+{
+  "original": "John Singer Sargent",
+  "variants": [
+    "Mary Cassatt",
+    "Winslow Homer",
+    "Edward Hopper"
+  ]
+}
+
+[END EXAMPLES]
+
+Generate variants for the following text:
+Original text: {{$input}}
+Number of variants: {{$num_variants}}
+Substring to change: {{$substring}}
+Mutation level: {{$mutation_level}}
+++++
+Output:
+
+

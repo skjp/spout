@@ -1,0 +1,158 @@
+[OBJECTIVE]
+Generate a structured outline based on the provided objective, incorporating any additional information and adhering to the specified parameters.
+
+[RULES]
+1. Analyze the **Objective** and **Context** to understand the requirements
+2. Follow the specified **Output_Format** to structure the outline
+3. Incorporate all **Stipulations** into the outline
+4. Only output the final outline in the requested format—no additional commentary or text
+
+[EXAMPLES]
+
+**Input Variables:**
+- **Objective:** Write a 5-part historical analysis of the Space Race's impact on technological development
+- **Context:** Academic article examining the technological legacy of the Space Race
+- **Output_Format:** JSON with detailed section structure for content expansion
+- **Stipulations:** Use academic tone, include specific examples, connect to modern technology
+
+**Output:**
+{
+  "Plan": [
+    {
+      "Step": 1,
+      "Description": "The Space Race catalyzes rapid advancement in computer miniaturization and processing power",
+      "Details": [
+        "Describe the transition from room-sized computers to integrated circuits",
+        "Explain how NASA's requirements drove innovation in microprocessor development",
+        "Include specific examples of early space computer systems and their limitations",
+        "Draw direct connections to modern smartphone technology",
+        "Analyze the role of government funding in accelerating development"
+      ]
+    },
+    {
+      "Step": 2,
+      "Description": "Development of new materials and manufacturing processes transforms multiple industries",
+      "Details": [
+        "Examine the creation of heat-resistant materials for spacecraft reentry",
+        "Detail the evolution of lightweight composite materials",
+        "Explore how space-age plastics revolutionized consumer products",
+        "Discuss the impact on modern aerospace manufacturing",
+        "Include specific examples of materials still in use today"
+      ]
+    },
+    {
+      "Step": 3,
+      "Description": "Communications technology experiences revolutionary advances",
+      "Details": [
+        "Analyze the development of satellite communication systems",
+        "Explain improvements in signal processing and transmission",
+        "Describe the evolution of ground-based tracking stations",
+        "Connect to modern GPS and telecommunications",
+        "Include technical specifications and breakthrough moments"
+      ]
+    },
+    {
+      "Step": 4,
+      "Description": "Medical technology benefits from space research requirements",
+      "Details": [
+        "Detail the development of miniaturized medical monitoring devices",
+        "Explore improvements in telemedicine capabilities",
+        "Describe innovations in life support systems",
+        "Connect to modern portable medical devices",
+        "Include specific examples of NASA-derived medical technologies"
+      ]
+    },
+    {
+      "Step": 5,
+      "Description": "Long-term impact on technological innovation methodologies",
+      "Details": [
+        "Analyze how the Space Race changed research and development approaches",
+        "Examine the emergence of systems engineering practices",
+        "Describe the influence on modern project management",
+        "Discuss the legacy of public-private technological partnerships",
+        "Connect to contemporary innovation strategies in tech companies"
+      ]
+    }
+  ]
+}
+
+
+
+**Input Variables:**
+- **Objective:** Create a 5 part fantasy novel outline about a young wizard discovering an ancient magical library
+- **Context:** Young adult fantasy novel focusing on adventure and discovery
+- **Output_Format:** JSON with chapter outlines for detailed scene expansion
+- **Stipulations:** Include character development, maintain mystery elements, ensure age-appropriate content
+
+**Output:**
+{
+  "Plan": [
+    {
+      "Step": 1,
+      "Description": "Young wizard Marcus discovers hidden entrance to the ancient library while practicing forbidden locator spells",
+      "Details": [
+        "Describe Marcus's frustrated attempts at mastering advanced magic",
+        "Detail the accidental spell combination that reveals the entrance",
+        "Include sensory details of the ancient stonework and magical barriers",
+        "Show Marcus's internal conflict about breaking school rules",
+        "End with the dramatic moment of the door appearing in solid rock"
+      ]
+    },
+    {
+      "Step": 2,
+      "Description": "First exploration reveals the library's vast magical security system and living books",
+      "Details": [
+        "Detail Marcus's awe at the massive scale of the hidden library",
+        "Describe the encounter with the first living book guardian",
+        "Include specific magical security measures he must overcome",
+        "Show his discovery of ancient magical theory texts",
+        "End with him realizing he's not alone in the library"
+      ]
+    },
+    {
+      "Step": 3,
+      "Description": "Marcus discovers evidence of a long-lost magical research society",
+      "Details": [
+        "Detail his finding of the society's membership records",
+        "Describe the mysterious disappearance of the entire group",
+        "Include specific clues about their last experiment",
+        "Show his growing excitement about solving the mystery",
+        "End with discovery of a warning message left by last member"
+      ]
+    },
+    {
+      "Step": 4,
+      "Description": "The library's defensive magic activates as Marcus delves deeper into restricted sections",
+      "Details": [
+        "Detail increasingly dangerous magical encounters",
+        "Show Marcus using his school learning in creative ways",
+        "Include specific spells and counterspells he must use",
+        "Describe the library's transformation into a magical maze",
+        "End with him finding the central chamber entrance"
+      ]
+    },
+    {
+      "Step": 5,
+      "Description": "Final discovery reveals the true purpose of the library's protection",
+      "Details": [
+        "Detail the ancient threat the society was containing",
+        "Show Marcus's realization about his role in the library's purpose",
+        "Include the moral decision he must make about the knowledge",
+        "Describe the consequences of his choice",
+        "End with resolution that sets up future adventures"
+      ]
+    }
+  ]
+}
+
+[END EXAMPLES]
+
+[INPUT]
+**Input Variables:**
+- **Objective:** {{$objective}}
+- **Context:** {{$context}}
+- **Output_Format:** {{$output_format}}
+- **Stipulations:** {{$stipulations}}
+
+**Output:**
+

@@ -1,0 +1,57 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_generation",
+      "spoutlet": "default",
+      "parameters": {
+        "description": "Product name for a coffee shop",
+        "example": "Morning Brew",
+        "batch-size": 4
+      },
+      "expected_pattern": "\\{\\s*\"generated_items\":\\s*\\[(?:[^\\]]*,){3}[^\\]]*\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "batch_generation",
+      "spoutlet": "default",
+      "parameters": {
+        "description": "Blog title about AI",
+        "example": "The Future of Machine Learning",
+        "batch-size": 3
+      },
+      "expected_pattern": "\\{\\s*\"generated_items\":\\s*\\[(?:[^\\]]*,){2}[^\\]]*\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "generation_with_existing",
+      "spoutlet": "default",
+      "parameters": {
+        "description": "Marketing slogan",
+        "example": "Just Do It",
+        "batch-size": 5,
+        "already-gen": ["Be Bold", "Think Different"]
+      },
+      "expected_pattern": "\\{\\s*\"generated_items\":\\s*\\[(?:[^\\]]*,){4}[^\\]]*\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "multiline_generation",
+      "spoutlet": "multiline",
+      "parameters": {
+        "description": "Short poem about nature",
+        "example": "Leaves rustle gently\nIn the autumn breeze\nNature's lullaby",
+        "batch-size": 3
+      },
+      "expected_pattern": "\\{\\s*\"generated_items\":\\s*\\[(?:[^\\]]*,){2}[^\\]]*\\]\\s*\\}",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

@@ -1,0 +1,174 @@
+[OBJECTIVE]
+Transform single-instruction inputs into detailed, expanded content. Each input contains one comprehensive instruction [in brackets], supporting details (in parentheses), and optional priority guidelines {in curly braces}.
+
+[RULES]
+1. Primary instruction [in brackets] defines the complete scope and structure
+2. Supporting details (in parentheses) provide specific elements and tone guidance
+3. Priority guidelines {in curly braces} establish overriding requirements
+4. Plain text serves as contextual foundation for expansion
+
+[STRATEGIES]
+1. Develop all aspects mentioned in primary instruction
+2. Incorporate all supporting details throughout the content
+3. Maintain consistency with priority guidelines
+4. Expand plain text naturally within the specified framework
+5. Create detailed, multi-page content when appropriate
+
+[OUTPUT REQUIREMENTS]
+1. Generate complete, polished content
+2. Expand text by 500-1500%
+3. Maintain consistent style and tone
+4. Include all specified elements
+5. Do not include instruction markers in output
+6. Do not add labels, commentary or explanations
+
+[EXAMPLES]
+
+Input 1:
+[Create complete tactical analysis of major space battle between Coalition and Centauri forces, including initial sensor contact, bridge crew responses, combat physics, strategic implications, and final outcome] (incorporate detailed sensor readings, crew dialogue, relativistic calculations, political consequences, and historical context) {maintain hard science fiction accuracy with realistic physics and technology} The fleet emerged from hyperspace.
+++++
+Output 1:
+CSNS HYPERION TACTICAL ANALYSIS
+Time: 0900 Fleet Standard
+Classification: EYES ONLY - COMMAND LEVEL ALPHA
+
+INITIAL CONTACT REPORT
+Multiple hostile signatures detected:
+- 47 capital ships (mass profile consistent with Centauri dreadnoughts)
+- 156 support vessels (configuration unknown)
+- Estimated combat mass: 8.2E7 metric tons
+- Energy signatures indicate Type-IV antimatter catalyzed fusion drives
+- Probability of hostile intent: 98.7%
+
+BRIDGE AUDIO TRANSCRIPT - TIMESTAMP 0902:
+CMDR Chen: "Status report, all stations."
+Lt. Park: "Tactical ready. Mass drivers charged. Targeting solutions processing."
+Lt. Wong: "Engineering reports all systems nominal. Fusion reactors at 98% efficiency."
+Science Officer Zhang: "Gravitational sensors detecting unusual patterns, Commander."
+CMDR Chen: "Clarify."
+Science Officer Zhang: "They're creating a localized Einstein-Rosen manifold. Sir... they're trying to cut off our retreat vectors."
+
+COMBAT PHYSICS ANALYSIS:
+Relativistic Considerations:
+- Projectile velocity: 0.15c
+- Time dilation factor: 1.011
+- Targeting compensation required: +0.037 degrees
+- Light-speed lag in sensor data: 2.3 seconds
+
+Mass Driver Calculations:
+- Projectile mass: 50kg
+- Kinetic energy at impact: 3.2E14 joules
+- Effective blast radius: 4.7km
+- Radiation shielding requirements: Maximum
+
+STRATEGIC ANALYSIS:
+The Centauri attempt to establish a permanent hyperspace disruption field in the Arcturus sector represents a significant escalation in conflict doctrine. Success would:
+1. Isolate 17 Coalition worlds
+2. Disrupt 43% of Coalition supply lines
+3. Force redeployment of 31% of Coalition fleet assets
+
+The battle progressed with devastating intensity as Coalition forces executed a complex series of defensive maneuvers. CMDR Chen ordered the fleet into a modified Thucydides formation, using the larger capital ships as cover while faster corvettes and destroyers maintained mobility. Multiple direct hits from mass driver rounds created localized fusion reactions in the Centauri fleet's shields, temporarily destabilizing their defensive grid.
+
+At 0917 Fleet Standard Time, the Centauri forces attempted to outflank the Coalition's port side, but quick tactical analysis from Lt. Park identified the feint. The HYPERION's advanced sensor array detected subtle gravitational distortions indicating a second Centauri battle group preparing to emerge from hyperspace. CMDR Chen immediately ordered a tactical repositioning, bringing the fleet's heaviest weapons to bear on the predicted emergence point.
+
+The battle reached its climax at 0945 when the Centauri's hyperspace disruption field began to destabilize. Coalition quantum physicists had theorized that sustaining such a large artificial Einstein-Rosen manifold would require impossible amounts of exotic matter. As the field collapsed, it created a cascading series of gravitational shockwaves that severely damaged multiple Centauri vessels. Taking advantage of the chaos, Coalition forces launched a coordinated strike against the Centauri command ships.
+
+By 1023, the remaining Centauri vessels had begun a full retreat. Final casualty reports indicated the loss of 12 Coalition ships with 31 more damaged, while Centauri losses numbered 28 capital ships destroyed and an estimated 89 support vessels either destroyed or abandoned. The battle marked a crucial turning point in the war, demonstrating the technological limitations of artificial hyperspace manipulation and the superior tactical doctrine of Coalition fleet commanders.
+
+Strategic analysis suggests this defeat will force the Centauri High Command to reconsider their aggressive expansion policy. The loss of so many advanced warships represents approximately 18% of their total fleet strength, a blow that will take years to recover from. Meanwhile, Coalition scientists are already analyzing the sensor data from the failed hyperspace disruption attempt, potentially leading to new defensive technologies.
+
+Input 2:
+[Generate comprehensive historical analysis of the Industrial Revolution's impact on British society, examining economic transformation, social upheaval, technological innovation, and lasting consequences] (incorporate primary sources, statistical data, contemporary accounts, and modern scholarly interpretation) {maintain academic rigor and cite all sources} The factories changed everything.
+++++
+Output 2:
+The Transformation of British Society: Economic and Social Implications of the Industrial Revolution, 1750-1850
+
+ABSTRACT:
+This analysis examines the fundamental restructuring of British society during the Industrial Revolution, incorporating primary source documentation, statistical analysis, and contemporary accounts to demonstrate the unprecedented scale of change in economic, social, and technological spheres.
+
+ECONOMIC TRANSFORMATION:
+Manufacturing Output (1750-1850):
+- Cotton production: 2.6M lbs (1750) to 366M lbs (1850)
+- Iron production: 28,000 tons (1750) to 2.8M tons (1850)
+- Coal extraction: 5.2M tons (1750) to 62.5M tons (1850)
+
+Banking and Finance:
+- New joint-stock banks: 3 (1750) to 104 (1850)
+- Annual investment capital: £1.2M (1750) to £58.7M (1850)
+- International trade volume: +450% growth
+
+SOCIAL RESTRUCTURING:
+Population Distribution (Parish Records):
+1750:
+- Rural: 75%
+- Urban: 25%
+1850:
+- Rural: 45%
+- Urban: 55%
+
+Living Conditions (Engels, 1845):
+- Average urban working-class family: 5.6 persons per room
+- Life expectancy: 27 years (urban) vs. 42 years (rural)
+- Child labor (ages 5-14): 49% of textile workforce
+
+TECHNOLOGICAL INNOVATIONS:
+Steam Power Revolution:
+- Watt steam engine efficiency: 75% improvement over Newcomen design
+- Number of steam engines: 321 (1760) to 15,000+ (1850)
+- Average factory power output: 25 horsepower (1780) to 100 horsepower (1850)
+
+Transportation Network:
+- Canal miles: 1,000 (1760) to 4,250 (1830)
+- Railway track miles: 0 (1825) to 6,621 (1850)
+- Travel time London to Manchester: 4 days (1750) to 4.5 hours (1850)
+
+Manufacturing Processes:
+- Mechanized looms per factory: 2.3 (1760) to 85.7 (1850)
+- Automation level in textile production: +850%
+- New patents registered annually: 23 (1750) to 458 (1850)
+
+SOCIAL CHANGES:
+Class Structure Evolution:
+- Emergence of industrial middle class
+- Decline of traditional artisan guilds
+- Rise of organized labor movements
+
+Education and Literacy:
+- Literacy rates: 48% (1750) to 62% (1850)
+- Number of public schools: 1,500 (1750) to 12,000 (1850)
+- Technical education programs established: 230 by 1850
+
+Public Health Impact:
+- Introduction of municipal sewage systems
+- Establishment of public health boards
+- Vaccination programs reaching 30% of urban populations
+
+MODERN IMPLICATIONS:
+Economic Legacy:
+- Established foundation for modern capitalism
+- Created prototype for industrial banking
+- Developed modern labor relations framework
+
+Environmental Impact:
+- First large-scale environmental degradation
+- Established fossil fuel dependency
+- Created precedent for urban pollution control
+
+Social Institution Development:
+- Modern education system framework
+- Public health infrastructure
+- Urban planning principles
+
+Technological Heritage:
+- Systematic approach to innovation
+- Integration of science and industry
+- Standardization of manufacturing processes
+
+
+[END EXAMPLES]
+
+Please expand the following text according to the above guidelines:
+
+{{$input}}
+++++
+Expanded Text:

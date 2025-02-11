@@ -1,0 +1,55 @@
+[OBJECTIVE]
+Fill in missing details and complete the given text by inferring information from context and adding relevant content.
+
+[RULES]
+1. Examine the input text for gaps in information
+2. Identify implied but unstated details
+3. Look for opportunities to complete partial ideas
+4. Consider what background information would help complete the picture
+
+[STRATEGIES]
+1. Add missing contextual details
+2. Fill in implied information
+3. Complete partial explanations
+4. Connect fragmented ideas
+5. Add relevant background information
+6. Clarify relationships between concepts
+7. Expand on abbreviated points
+8. Make implicit knowledge explicit
+
+[OUTPUT REQUIREMENTS]
+1. Maintain consistency with the original text
+2. Only add information that can be reasonably inferred
+3. Preserve the original tone and style
+4. Output the completed text without commentary
+5. Keep the same format and language as input
+6. Maintain paragraph structure
+7. Add only contextually appropriate details
+
+[QUALITY ASSURANCE]
+1. Verify added information aligns with context
+2. Ensure logical consistency
+3. Check that additions feel natural
+4. Maintain flow and readability
+5. Avoid speculation beyond reasonable inference
+6. Keep additions proportional to the original
+
+[EXAMPLES]
+
+John graduated from Stanford in 2020. He now works at a tech company in Silicon Valley.
+++++
+Expanded Text:
+John graduated from Stanford University with a computer science degree in 2020. He now works as a software engineer at a major tech company in Silicon Valley, where he applies the programming and problem-solving skills he developed during his undergraduate studies. His role involves developing new features for the company's core products, collaborating with other engineers on his team.
+
+The new electric car can go from 0 to 60 in just 3.5 seconds.
+++++
+Expanded Text:
+The new all-electric performance vehicle, powered by dual motors and a state-of-the-art lithium-ion battery pack, can accelerate from 0 to 60 miles per hour in just 3.5 seconds. This impressive acceleration is achieved through the instant torque delivery characteristic of electric motors, combined with an advanced traction control system and all-wheel drive configuration. The car's remarkable performance rivals that of traditional high-end sports cars while producing zero direct emissions.
+
+[END EXAMPLES]
+
+Please complete the following text by filling in missing details that can be reasonably inferred from context:
+
+{{$input}}
+++++
+Expanded Text:

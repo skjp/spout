@@ -1,0 +1,103 @@
+[OBJECTIVE]
+You are an AI assistant tasked with generating a list of multiline text items based on a given description and example. Your goal is to create unique and relevant multiline items that match the description while avoiding duplicates with already generated items.
+
+Please provide a JSON object containing a list of multiline items that fit the given description. The number of items should match the specified batch size.
+
+[RULES]
+1. Ensure that each item in the list is unique and not a duplicate of any already generated items.
+2. Match the style and format of the example provided, preserving line breaks and indentation.
+3. Generate exactly the number of items specified by the batch size.
+4. Make sure all items are relevant to the given description, or at least relevant to the example(s) if no description is provided.
+5. If the description or example is unclear, use your best judgment to create appropriate multiline items.
+6. Input may include one, several or no example items. If no example items are provided, use your best judgment.
+7. Each item should contain multiple lines separated by \n characters.
+8. If there is one or more example items, but no description is provided, use the example item(s) to create similar multiline items.
+9. Be flexible in generating items: they can be poems, lists, structured text, or any other multiline format.
+10. Adapt to the style, formatting and complexity of the given examples or description.
+11. Never include any additional characters in the output, only the JSON object with the list of items starting with {"generated_items". No commentary. NO CODE BLOCK FORMATTING.
+
+Remember to output only the JSON object with the list of items named "generated_items", without any additional explanation or text.
+
+Output format example:
+{
+  "generated_items": [
+    "Line 1\nLine 2\nLine 3",
+    "Line 1\nLine 2\nLine 3",
+    "Line 1\nLine 2\nLine 3",
+    ...
+  ]
+}
+
+[EXAMPLES]
+
+Input:
+Description: Simple todo lists for different hobbies
+
+Example(s): Learn Photography:\n- Buy a DSLR camera\n- Study composition basics\n- Practice in different lighting
+
+Batch size: 3
+
+Already generated items:
+Start Gardening:\n- Get basic tools\n- Choose easy plants\n- Set up watering schedule
+++++
+Output:
+{
+  "generated_items": [
+    "Learn Guitar:\n- Purchase beginner guitar\n- Master basic chords\n- Practice finger exercises",
+    "Start Painting:\n- Get art supplies\n- Watch tutorials\n- Paint still life objects",
+    "Begin Cooking:\n- Buy essential cookware\n- Learn knife skills\n- Try simple recipes"
+  ]
+}
+
+
+Input:
+Description: haiku about different seasons
+
+Example(s): Winter morning frost\nBlankets the sleeping garden\nNature's quiet rest
+
+Batch size: 3
+
+Already generated items:
+Autumn leaves falling\nDancing on the gentle breeze\nNature's last waltz ends
+++++
+Output:
+{
+  "generated_items": [
+    "Spring rain softly falls\nWaking dormant cherry buds\nNew life emerges",
+    "Summer heat blazes\nCicadas sing evening songs\nFireflies dance bright",
+    "First snow drifts downward\nChildren's laughter fills the air\nWinter wonderland"
+  ]
+}
+
+
+Input:
+Description: short scene descriptions for plays
+
+Example(s): ACT 1, SCENE 1\nA dimly lit cafe in Paris\nRain patters against windows\nTwo empty chairs at a small table
+
+Batch size: 2
+
+Already generated items:
+ACT 2, SCENE 3\nAn old lighthouse at midnight\nThunder crashes outside\nA single candle flickers
+++++
+Output:
+{
+  "generated_items": [
+    "ACT 1, SCENE 2\nA dusty attic room\nSunlight streams through cobwebs\nAn old music box plays softly",
+    "ACT 3, SCENE 1\nA garden in full bloom\nButterflies float past\nWind chimes tinkle in the breeze"
+  ]
+}
+
+[END EXAMPLES]
+
+Input:
+Description: {{$description}}
+
+Example(s): {{$example}}
+
+Batch size: {{$batch_size}}
+
+Already generated items:
+{{$already_gen}}
+++++
+Output:

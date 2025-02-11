@@ -1,0 +1,41 @@
+{
+  "test_cases": [
+    {
+      "name": "basic_parsing",
+      "spoutlet": "default",
+      "parameters": {
+        "input": "John Doe, Software Engineer, john@email.com",
+        "categories": "name, title, email"
+      },
+      "expected_pattern": "(?is).*\"ParsedParts\"\\s*:\\s*\\{.*\\}.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "product_details",
+      "spoutlet": "default",
+      "parameters": {
+        "input": "Product: Widget 2000, Cost: $19.99",
+        "categories": "product_name, price" 
+      },
+      "expected_pattern": "(?is).*\"ParsedParts\"\\s*:\\s*\\{.*\\}.*",
+      "timeout": 30,
+      "sample": true
+    },
+    {
+      "name": "meeting_info",
+      "spoutlet": "default",
+      "parameters": {
+        "input": "Meeting at 3pm with Alice about project X",
+        "categories": "time, attendees, topic"
+      },
+      "expected_pattern": "(?is).*\"ParsedParts\"\\s*:\\s*\\{.*\\}.*",
+      "timeout": 30,
+      "sample": true
+    }
+  ],
+  "global_settings": {
+    "default_timeout": 30,
+    "default_model": "gpt-3.5-turbo"
+  }
+}

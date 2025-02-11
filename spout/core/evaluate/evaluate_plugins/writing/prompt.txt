@@ -1,0 +1,104 @@
+[OBJECTIVE]
+Evaluate and rank the provided text samples based on literary and grammatical criteria.
+
+[RULES]
+1. Split the **Combined Inputs** using the specified **Separator**.
+2. For each text sample:
+   - If a label is present (enclosed within `--`), extract it as the **Name**. If the label exceeds 16 characters, use it; otherwise, use the first 16 characters of the label as the **Name**.
+   - If no label is present:
+     - For short samples (<=50 characters), use the entire text as the **Name**.
+     - For longer samples (>50 characters), generate a label like "Sample 1", "Sample 2", etc., as the **Name**.
+   - Extract the main text following the label (if present).
+3. Parse the **Judging Criteria**:
+   - If weights are included (formatted as `Criterion:Weight`), apply them to prioritize the criteria.
+   - If no weights are provided, treat all criteria with equal importance.
+4. Evaluate each sample based on the **Judging Criteria** in the order provided.
+5. Assign numerical scores (1-10) for each criterion.
+6. Calculate a total score for each sample by summing the weighted scores.
+7. Rank the samples from highest to lowest based on their total scores.
+8. If **Explanation** is set to `true`, provide a brief (up to two sentences each) explanation for each ranking.
+9. Structure the results in the specified **Output Format** (JSON).
+10. Do not include any explanations or text outside of the JSON output.
+
+[EXAMPLES]
+
+**Combined Inputs:**
+--Essay A--The majestic mountains loomed overhead, their snow-capped peaks piercing the azure sky. Wisps of clouds danced around the jagged summits, creating an ethereal display of nature's grandeur. Below, a pristine alpine meadow stretched endlessly, dotted with vibrant wildflowers swaying gently in the crisp mountain breeze.@@--Essay B--The mountains were big and tall. The clouds were around the tops. There were flowers in the field below. The wind was blowing on the flowers. It was a nice view from where I stood.
+
+**Parameters:**
+- **Separator:** @@
+- **Judging Criteria:** Diction:0.3, SentenceVariety:0.3, Imagery:0.4
+- **Explanation:** true
+
+**Output:**
+{ "Rankings": [ { "Rank": 1, "Name": "Essay A", "Score": 9.2, "Explanation": "Essay A demonstrates sophisticated vocabulary, varied sentence structures, and vivid imagery through detailed descriptions and metaphoric language." }, { "Rank": 2, "Name": "Essay B", "Score": 5.4, "Explanation": "Essay B uses basic vocabulary and repetitive sentence structures, with limited descriptive elements and minimal imagery." } ] }
+
+
+
+**Combined Inputs:**
+--Sample 1--Despite the inclement weather, the intrepid explorers persevered through the dense jungle.@@--Sample 2--Even though it was raining, the brave explorers kept going through the thick jungle.@@--Sample 3--The explorers went through the jungle while it rained.
+
+**Parameters:**
+- **Separator:** @@
+- **Judging Criteria:** Vocabulary, Grammar, Style
+- **Explanation:** false
+
+**Output:**
+{ "Rankings": [ { "Rank": 1, "Name": "Sample 1", "Score": 9.0 }, { "Rank": 2, "Name": "Sample 2", "Score": 7.5 }, { "Rank": 3, "Name": "Sample 3", "Score": 5.5 } ] }
+
+
+
+**Combined Inputs:**
+--Draft 1--The old house stood silently at the end of Maple Street, its weathered shutters creaking in the autumn wind. Years of neglect had transformed what was once a proud Victorian mansion into a hollow shell of its former glory. Yet somehow, in its decay, it held an haunting beauty that captured the imagination of all who passed by.@@--Draft 2--The old house at the end of Maple Street had weathered shutters that creaked in the wind. It was a Victorian mansion that had been neglected for years. It was now a shell of what it used to be. People who walked by thought it was hauntingly beautiful.
+
+**Parameters:**
+- **Separator:** @@
+- **Judging Criteria:** Coherence:0.2, SentenceFlow:0.4, Description:0.4
+- **Explanation:** true
+
+**Output:**
+{ "Rankings": [ { "Rank": 1, "Name": "Draft 1", "Score": 8.8, "Explanation": "Draft 1 exhibits seamless flow between sentences and rich descriptive language that creates a vivid atmosphere. The narrative maintains a consistent tone while effectively building imagery through varied sentence structures." }, { "Rank": 2, "Name": "Draft 2", "Score": 6.4, "Explanation": "Draft 2 presents the same information but with choppy transitions and simpler sentence structures. The descriptions are more straightforward but lack the evocative quality of the first draft." } ] }
+
+
+
+**Combined Inputs:**
+The sun cast long shadows across the empty plaza, while a gentle breeze carried the scent of jasmine through the air.@@In the plaza, shadows stretched out as the sun went down. The wind blew and you could smell jasmine.
+
+**Parameters:**
+- **Separator:** @@
+- **Judging Criteria:** Grammar:0.3, Diction:0.3, Style:0.4
+- **Explanation:** false
+
+**Output:**
+{ "Rankings": [ { "Rank": 1, "Name": "The sun cast lon", "Score": 8.9 }, { "Rank": 2, "Name": "In the plaza, sh", "Score": 6.7 } ] }
+
+
+
+**Combined Inputs:**
+The crimson leaves pirouetted gracefully to the ground, painting the forest floor in autumn's vibrant palette. A cool breeze whispered ancient secrets through the branches.
+
+The red leaves fell down to the ground and made the forest floor colorful. The wind blew through the trees.
+
+Descending with ethereal grace, each maple leaf performed its final dance before joining nature's masterpiece below. The wind's gentle symphony conducted this seasonal performance.
+
+Leaves dropped from the trees and landed on the ground in the forest. It was windy and the branches moved around.
+
+**Parameters:**
+- **Separator:** \n\n
+- **Judging Criteria:** Imagery:0.5, WordChoice:0.5
+- **Explanation:** false
+
+**Output:**
+{ "Rankings": [ { "Rank": 1, "Name": "Descending with", "Score": 9.5 }, { "Rank": 2, "Name": "The crimson leav", "Score": 8.8 }, { "Rank": 3, "Name": "The red leaves f", "Score": 5.6 }, { "Rank": 4, "Name": "Leaves dropped f", "Score": 4.2 } ] }
+
+[END EXAMPLES]
+
+[INPUT]
+{{$CombinedInputs}}
+
+**Parameters:**
+- **Separator:** {{$Separator}}
+- **Judging Criteria:** {{$JudgingCriteria}}
+- **Explanation:** {{$Explanation}}
+
+**Output:**

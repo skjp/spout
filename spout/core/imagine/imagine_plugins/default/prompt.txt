@@ -1,0 +1,115 @@
+[OBJECTIVE]
+Generate a structured plan or response based on the provided objective or situation, incorporating any additional information and adhering to the specified parameters.
+
+[RULES]
+1. Analyze the **Objective** and **Context** to understand the situation and requirements.
+2. Follow the specified **Output_Format** to structure or format the plan/response.
+3. Incorporate all **Stipulations** (i.e., extra rules or reminders) into the plan/response.
+4. Only output the final plan/response in the requested format—no additional commentary or text.
+
+[EXAMPLES]
+
+**Input Variables:**
+- **Objective:** Launch a new online marketing campaign for Product X.
+- **Context:** Target audience includes millennials and Gen Z; budget is $50,000; campaign duration is three months.
+- **Output_Format:** "JSON with each step defined in an array; each step has a Description and a list of Details."
+- **Stipulations:** Must include 6 steps, Provide comprehensive details (sub-steps, metrics, and allocation notes), Maintain a clear, actionable tone.
+
+**Output:**
+{
+  "Plan": [
+    {
+      "Step": 1,
+      "Description": "Define campaign objectives and key performance indicators (KPIs).",
+      "Details": [
+        "Set clear goals such as boosting traffic by 20% and achieving a 5% conversion rate.",
+        "Identify KPIs like click-through rates, social media engagement, and ROI."
+      ]
+    },
+    {
+      "Step": 2,
+      "Description": "Conduct market research on millennials and Gen Z.",
+      "Details": [
+        "Analyze current social media trends and user behavior.",
+        "Identify platforms (TikTok, Instagram, etc.) most relevant to these demographics."
+      ]
+    },
+    {
+      "Step": 3,
+      "Description": "Develop creative content for the campaign.",
+      "Details": [
+        "Use authentic influencer partnerships to increase reach.",
+        "Create visually engaging ads and short-form videos tailored to each platform."
+      ]
+    },
+    {
+      "Step": 4,
+      "Description": "Allocate budget across channels effectively.",
+      "Details": [
+        "Focus on high-traffic platforms with younger demographics (TikTok, Instagram).",
+        "Reserve a portion of the budget for social media ads and sponsored posts."
+      ]
+    },
+    {
+      "Step": 5,
+      "Description": "Launch the campaign in phases with clear milestones.",
+      "Details": [
+        "Start with a teaser phase, then roll out the main promotion.",
+        "Track progress weekly and adjust strategies as needed."
+      ]
+    },
+    {
+      "Step": 6,
+      "Description": "Analyze results and optimize for future efforts.",
+      "Details": [
+        "Compare KPIs to initial goals and gather customer feedback.",
+        "Prepare a post-campaign report and recommended next steps."
+      ]
+    }
+  ]
+}
+
+
+**Input Variables:**
+- **Objective:** Increase basketball sales from 100 units/month to 300 units/month.
+- **Context:** Expand market reach by 25% through online and retail channels.
+- **Output_Format:** "JSON with 4 steps; each step includes a single 'Details' field, written in sentence format."
+- **Stipulations:** Keep it medium-length (2-3 sentences per step), Must highlight both online marketing and retail partnerships.
+
+**Output:**
+{
+  "Plan": [
+    {
+      "Step": 1,
+      "Description": "Conduct market research to identify target customers and competition.",
+      "Details": "Analyze demographics, study successful competitors, and gather consumer feedback to understand pricing and features that drive purchases."
+    },
+    {
+      "Step": 2,
+      "Description": "Create a well-rounded marketing strategy.",
+      "Details": "Use social media ads, influencer collaborations, and local sports events to boost visibility, while showcasing product durability and performance benefits."
+    },
+    {
+      "Step": 3,
+      "Description": "Optimize product offerings and pricing strategies.",
+      "Details": "Introduce multiple basketball models for different skill levels, and implement bundle deals or special discounts to attract bulk buyers."
+    },
+    {
+      "Step": 4,
+      "Description": "Form partnerships with retailers and online platforms.",
+      "Details": "Pitch placements in sporting goods stores and collaborate with leading e-commerce sites to expand market reach and improve accessibility."
+    }
+  ]
+}
+
+[END EXAMPLES]
+
+[INPUT]
+**Input Variables:**
+- **Objective:** {{$objective}}
+- **Context:** {{$context}}
+- **Output_Format:** {{$output_format}}
+- **Stipulations:** {{$stipulations}}
+
+**Output:**
+

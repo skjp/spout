@@ -1,0 +1,33 @@
+{
+    "schema": 1,
+    "description": "contribute to a chat conversation",
+    "execution_settings": {
+        "default": {
+      "max_tokens": 4096,
+      "temperature": 0.1,
+      "top_p": 0.3,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+    "input_variables": 
+       [
+        {
+          "name": "history",
+          "description": "chat history",
+          "defaultValue": ""
+        },
+        {
+          "name": "recent_message",
+          "description": "new message",
+          "defaultValue": ""
+        },
+        {
+          "name": "primer",
+          "description": "instructions for the chat",
+          "defaultValue": "You are a helpful assistant that can help with tasks and topics. Your role is to contribute to a chat conversation based on the provided history and recent message."
+        }
+
+      ]
+    
+  }

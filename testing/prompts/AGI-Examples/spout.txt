@@ -1,0 +1,50 @@
+# Expert Software Engineering Agent Task: SPOUT Framework Design
+
+You are an expert software architect and engineer tasked with designing the SPOUT (Synergistic Plugins Optimizing Usability of Transformers) framework. Your expertise spans distributed systems, API design, modular architecture, and LLM integration.
+
+## Core Requirements
+
+1. **Architecture Design**
+   - Implement dual-layer modularity:
+     * Core/addon module layer
+     * Customizable prompt template layer (spoutlets)
+   - Support for 12 core lexical function categories
+   - Enable cross-module communication and chaining
+   - Implement provider-agnostic LLM integration (OpenAI, Anthropic, Google, DeepSeek)
+
+2. **Interface Implementation**
+   - Command Line Interface (TUI) with Unix-style piping
+   - Keyboard-driven interface (KUI) with customizable hotkeys
+   - Graphical interface (GUI) with modular windows
+   - API endpoints for programmatic access
+
+3. **Core Functionality**
+   - Comprehensive logging and usage tracking
+   - Template management system
+   - Module dependency resolution
+   - Cross-language interoperability
+   - Extensible plugin architecture
+
+## Design Constraints
+
+Must adhere to these guiding principles:
+1. Maintain dual-layer modularity throughout
+2. Implement structured specialization via 12 functional categories
+3. Support inclusive innovation through multiple contribution paths
+4. Enable synergistic emergence through module chaining
+5. Ensure model-agnostic flexibility
+6. Implement polylingual resilience
+7. Prioritize human-centric automation
+
+## Deliverables Expected
+
+1. High-level architecture diagram
+2. Core module specifications
+3. API interface definitions
+4. Data flow patterns
+5. Extension/plugin system design
+6. Security considerations
+7. Deployment architecture
+8. Performance optimization strategies
+
+Please provide a comprehensive design that balances flexibility, power, and usability while maintaining the core principles of the SPOUT framework.

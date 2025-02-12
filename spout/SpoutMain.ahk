@@ -62,16 +62,21 @@ global chatHistory := ""
 
 ; Function to load available models based on API keys
 LoadAvailableModels() {
-    models := []
+    models := ["No models available - Enter API key(s)"]  ; Default entry when no keys are valid
+    hasValidKey := false
     
-    ; Check OpenAI models
+    ; Check OpenAI models - only require API key, org ID is optional
     if (StrLen(IniRead(settingsFile, "OpenAI", "ApiKey", "")) > 12) {
         try {
             section := IniRead(modelsFile, "OpenAI")
             Loop Parse, section, "`n", "`r" {
                 parts := StrSplit(A_LoopField, "=")
                 if (parts[2] = "1") {
+                    if (models[1] = "No models available - Enter API key(s)") {
+                        models := [] ; Clear default message if we find valid models
+                    }
                     models.Push(parts[1])
+                    hasValidKey := true
                 }
             }
         }
@@ -84,7 +89,11 @@ LoadAvailableModels() {
             Loop Parse, section, "`n", "`r" {
                 parts := StrSplit(A_LoopField, "=")
                 if (parts[2] = "1") {
+                    if (models[1] = "No models available - Enter API key(s)") {
+                        models := [] ; Clear default message if we find valid models
+                    }
                     models.Push(parts[1])
+                    hasValidKey := true
                 }
             }
         }
@@ -97,7 +106,11 @@ LoadAvailableModels() {
             Loop Parse, section, "`n", "`r" {
                 parts := StrSplit(A_LoopField, "=")
                 if (parts[2] = "1") {
+                    if (models[1] = "No models available - Enter API key(s)") {
+                        models := [] ; Clear default message if we find valid models
+                    }
                     models.Push(parts[1])
+                    hasValidKey := true
                 }
             }
         }
@@ -110,7 +123,11 @@ LoadAvailableModels() {
             Loop Parse, section, "`n", "`r" {
                 parts := StrSplit(A_LoopField, "=")
                 if (parts[2] = "1") {
+                    if (models[1] = "No models available - Enter API key(s)") {
+                        models := [] ; Clear default message if we find valid models
+                    }
                     models.Push(parts[1])
+                    hasValidKey := true
                 }
             }
         }
@@ -123,7 +140,11 @@ LoadAvailableModels() {
             Loop Parse, section, "`n", "`r" {
                 parts := StrSplit(A_LoopField, "=")
                 if (parts[2] = "1") {
+                    if (models[1] = "No models available - Enter API key(s)") {
+                        models := [] ; Clear default message if we find valid models
+                    }
                     models.Push(parts[1])
+                    hasValidKey := true
                 }
             }
         }
@@ -352,15 +373,15 @@ SpoutSettings() {
 
     ; Notes Folder (adjusted y-position since we removed SpoutPro section)
     SpoutGui.Add("Text", "x10 y10 w100 c" . colorScheme.Text, "Notes Folder:")
-    qwiknotesEdit := SpoutGui.Add("Edit", "x170 y10 w350 vNotesFolder c" . colorScheme.Text . " Background" . colorScheme.EditBackground, ReadSetting("General", "NotesFolder", A_MyDocuments . "\Notes"))
+    qwiknotesEdit := SpoutGui.Add("Edit", "x170 y10 w350 h20 vNotesFolder c" . colorScheme.Text . " Background" . colorScheme.EditBackground, ReadSetting("General", "NotesFolder", A_MyDocuments . "\Notes"))
     SpoutGui.Add("Button", "x530 y10 w80", "Browse").OnEvent("Click", (*) => BrowseQwiknotes(qwiknotesEdit))
 
     ; Browser Location (adjusted subsequent y-positions)
     SpoutGui.Add("Text", "x10 y40 w100 c" . colorScheme.Text, "Default Browser:")
-    browserEdit := SpoutGui.Add("Edit", "x170 y40 w350 vBrowserLocation c" . colorScheme.Text . " Background" . colorScheme.EditBackground, ReadSetting("General", "BrowserLocation", "C:\")) 
+    browserEdit := SpoutGui.Add("Edit", "x170 y40 w350 h20 vBrowserLocation c" . colorScheme.Text . " Background" . colorScheme.EditBackground, ReadSetting("General", "BrowserLocation", "C:\")) 
     SpoutGui.Add("Button", "x530 y40 w80", "Browse").OnEvent("Click", (*) => BrowseBrowser(browserEdit))
 
-    ; OpenAI API Key
+    ; OpenAI API Key (adjusted y-position to add more space)
     SpoutGui.Add("Text", "x10 y70 w100 c" . colorScheme.Text, "OpenAI Key:")
     apiKeyEdit := SpoutGui.Add("Edit", "x170 y70 w450 vOpenAIApiKey c" . colorScheme.Text . " Background" . colorScheme.EditBackground, ReadSetting("OpenAI", "ApiKey"))
 
@@ -387,7 +408,16 @@ SpoutSettings() {
     ; Preferred Model
     SpoutGui.Add("Text", "x10 y250 w100 c" . colorScheme.Text, "Preferred Model:")
     modelDropdown := SpoutGui.Add("DropDownList", "x170 y250 w450 vPreferredModel c" . colorScheme.Text . " Background" . colorScheme.EditBackground, modelOptions)
-    modelDropdown.Choose(ReadSetting("General", "PreferredModel", "gpt-3.5-turbo"))
+    if (modelOptions[1] != "No models available - Enter API key(s)") {
+        currentModel := ReadSetting("General", "PreferredModel", modelOptions[1])
+        if (HasVal(modelOptions, currentModel)) {
+            modelDropdown.Choose(currentModel)
+        } else {
+            modelDropdown.Choose(1)
+        }
+    } else {
+        modelDropdown.Choose(1)
+    }
 
     ; Token Count Model
     SpoutGui.Add("Text", "x10 y280 w130 c" . colorScheme.Text, "Token Count Model:")
@@ -614,9 +644,23 @@ SpoutSettings() {
     }
 }
 ; Check if the OpenAI API key is less than 12 characters
-if (modelOptions.Length < 1) {
+if (modelOptions.Length < 1 || modelOptions[1] = "No models available - Enter API key(s)") {
     MsgBox("Please provide at least one valid API key in Settings to enable language model services.")
     SpoutSettings()
+} else {
+    ; Initialize core module Spoutlet settings
+    reduceSpoutlet := ReadOrInitializeSetting("Reduce", "PreferredSpoutlet", "default")
+    searchSpoutlet := ReadOrInitializeSetting("Search", "PreferredSpoutlet", "default") 
+    enhanceSpoutlet := ReadOrInitializeSetting("Enhance", "PreferredSpoutlet", "default")
+    expandSpoutlet := ReadOrInitializeSetting("Expand", "PreferredSpoutlet", "default")
+    mutateSpoutlet := ReadOrInitializeSetting("Mutate", "PreferredSpoutlet", "default")
+    translateSpoutlet := ReadOrInitializeSetting("Translate", "PreferredSpoutlet", "default")
+    generateSpoutlet := ReadOrInitializeSetting("Generate", "PreferredSpoutlet", "default")
+    iterateSpoutlet := ReadOrInitializeSetting("Iterate", "PreferredSpoutlet", "default")
+    converseSpoutlet := ReadOrInitializeSetting("Converse", "PreferredSpoutlet", "default")
+    evaluateSpoutlet := ReadOrInitializeSetting("Evaluate", "PreferredSpoutlet", "default")
+    imagineSpoutlet := ReadOrInitializeSetting("Imagine", "PreferredSpoutlet", "default")
+    parseSpoutlet := ReadOrInitializeSetting("Parse", "PreferredSpoutlet", "default")
 }
 
 ; Function to create and populate the context menu
@@ -1482,7 +1526,7 @@ SpoutNoter(content := "", auto := false, file := "Default.txt") {
     SetTimer(ScrollToBottom, -100)
 
     ScrollToBottom() {
-        totalLines := SendMessage(0xBA, 0, 0, , "ahk_id " . fileEdit.Hwnd)
+        totalLines := SendMessage(0xBA, 0, 0, 0, , "ahk_id " . fileEdit.Hwnd)
         SendMessage(0xB6, totalLines * 2, 0, , "ahk_id " . fileEdit.Hwnd) 
         ControlSend("{Ctrl down}{End}{Ctrl up}", , fileEdit)
         noteEdit.Focus()

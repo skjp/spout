@@ -1,0 +1,119 @@
+###############################################################################
+# Default: Ignore everything unless explicitly allowed
+###############################################################################
+*
+!*/
+
+###############################################################################
+# Root Directory Files
+###############################################################################
+!README.md
+!.gitignore
+!QuickStart.ahk
+!LICENSE
+!pyproject.toml
+!CHANGELOG.md
+
+###############################################################################
+# Spout Directory
+###############################################################################
+spout/**/*
+
+
+# Core functionality
+!spout/core/
+!spout/core/**/*
+spout/core/**/__pycache__/
+# Ignore local and pro modules
+!spout/core/**/*_local/
+spout/core/**/*_local/**
+!spout/core/**/*_local/**/.gitkeep
+spout/core/**/*_pro/
+spout/core/**/*_pro/**/*
+!spout/core/**/*_plugins/
+!spout/core/**/*_plugins/**/*
+!spout/core/**/options/
+spout/core/**/options/**
+!spout/core/**/options/**/.gitkeep
+# Test-related ignores
+spout/core/**/tests/**/*.json
+!spout/core/**/tests/**/test_cases.json
+!spout/core/**/tests/**/samples/
+spout/core/**/tests/**/samples/**
+!spout/core/**/tests/**/samples/**/.gitkeep
+spout/core/**/tests/**/*.txt
+# Ignore txt files except in plugins
+spout/core/**/*.txt
+!spout/core/**/*_plugins/**/*.txt
+
+# Shared utilities
+!spout/shared/
+!spout/shared/**/*
+spout/shared/**/__pycache__/
+spout/shared/**/Includes.ahk
+
+# Addons
+!spout/addons/
+spout/addons/**/*
+!spout/addons/.gitkeep
+
+# Configuration
+!spout/config/
+!spout/config/example_*
+
+# Root level spout files
+!spout/ExampleConsole*.ahk
+!spout/spout_cli.py
+!spout/SpoutMain.ahk
+!spout/__init__.py
+
+###############################################################################
+# Testing Directory
+###############################################################################
+testing/*
+
+# Prompts directory
+!testing/prompts/
+testing/prompts/**/*
+!testing/prompts/*-Examples/
+!testing/prompts/*-Examples/**/*
+!testing/prompts/*-examples.txt
+
+# Core testing files
+!testing/core_testing/
+testing/core_testing/**/*
+!testing/core_testing/test_core*
+!testing/core_testing/test_gamut*
+
+# Test cases
+!testing/tests/
+!testing/tests/.gitkeep
+
+# Sample generators
+!testing/generate_samples/
+testing/generate_samples/**/*
+!testing/generate_samples/generate_core_samples*
+
+# Prompt runners
+!testing/prompt_runners/
+testing/prompt_runners/**/*
+!testing/prompt_runners/prompt_gamut*
+!testing/prompt_runners/prompt_runner*
+
+###############################################################################
+# Scripting Directory
+###############################################################################
+scripting/*
+!scripting/output/
+scripting/output/**
+!scripting/output/**/.gitkeep
+!scripting/example_*/
+!scripting/example_*/**/*
+!scripting/package.json
+
+###############################################################################
+# Notes Directory
+###############################################################################
+!notes/
+notes/**/*
+!notes/.gitkeep

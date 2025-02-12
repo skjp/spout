@@ -7,5 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.8.0] - 2025-02-11
 
-### Added
+### Fixed (2025-02-12)
+- fix for API key handling in settings GUI
+- Removed dependency on OpenAI org-id for model loading
+- Fixed text overlap issues in browser and notes folder fields
+- Added Includes.ahk to .gitignore to prevent tracking of local includes
+- Added .gitignore file to the project
+
+### Added (2025-02-11)
 - Initial public project release
+

@@ -566,6 +566,17 @@ SpoutSettings() {
             ; Continue even if saving position fails
         }
         savedValues := gui.Submit()
+        
+        ; Store original values to check for changes
+        originalKeys := {
+            OpenAI: ReadSetting("OpenAI", "ApiKey"),
+            OpenAIOrgId: ReadSetting("OpenAI", "OrgId"),
+            Replicate: ReadSetting("Replicate", "ApiKey"),
+            Google: ReadSetting("Google", "ApiKey"),
+            Anthropic: ReadSetting("Anthropic", "ApiKey"),
+            DeepSeek: ReadSetting("DeepSeek", "ApiKey")
+        }
+        
         WriteSetting("General", "Theme", savedValues.Theme)
         WriteSetting("General", "BrowserLocation", savedValues.BrowserLocation)
         WriteSetting("General", "NotesFolder", savedValues.NotesFolder)
@@ -574,45 +585,32 @@ SpoutSettings() {
         WriteSetting("General", "TokenCountModel", savedValues.TokenCountModel)
         WriteSetting("General", "SoundEffects", savedValues.SoundEffects)
 
-
-        ; Validate API keys
-        invalidKeys := []
-
-        ; OpenAI
+        ; Validate and save API keys
         if (!ValidateApiKey(savedValues.OpenAIApiKey, "OpenAI")) {
-            invalidKeys.Push("OpenAI")
             WriteSetting("OpenAI", "ApiKey", "*********")
         } else {
             WriteSetting("OpenAI", "ApiKey", savedValues.OpenAIApiKey)
         }
 
-        ; Replicate
         if (!ValidateApiKey(savedValues.ReplicateApiKey, "Replicate")) {
-            invalidKeys.Push("Replicate")
             WriteSetting("Replicate", "ApiKey", "*********")
         } else {
             WriteSetting("Replicate", "ApiKey", savedValues.ReplicateApiKey)
         }
 
-        ; Google
         if (!ValidateApiKey(savedValues.GoogleApiKey, "Google")) {
-            invalidKeys.Push("Google")
             WriteSetting("Google", "ApiKey", "*********")
         } else {
             WriteSetting("Google", "ApiKey", savedValues.GoogleApiKey)
         }
 
-        ; Anthropic
         if (!ValidateApiKey(savedValues.AnthropicApiKey, "Anthropic")) {
-            invalidKeys.Push("Anthropic")
             WriteSetting("Anthropic", "ApiKey", "*********")
         } else {
             WriteSetting("Anthropic", "ApiKey", savedValues.AnthropicApiKey)
         }
 
-        ; DeepSeek
         if (!ValidateApiKey(savedValues.DeepSeekApiKey, "DeepSeek")) {
-            invalidKeys.Push("DeepSeek")
             WriteSetting("DeepSeek", "ApiKey", "*********")
         } else {
             WriteSetting("DeepSeek", "ApiKey", savedValues.DeepSeekApiKey)
@@ -624,15 +622,17 @@ SpoutSettings() {
             WriteSetting(module, "PreferredSpoutlet", savedValues.%module%Spoutlet)
         }
         
-        soundEffects := savedValues.SoundEffects
-
-        ; Show message if any keys were invalid
-        if (invalidKeys.Length > 0) {
-            MsgBox("The following API keys were invalid and have been reset:`n`n" . 
-                   StrReplace(StrJoin(invalidKeys, ", "), ",", "`n"), "Invalid API Keys")
+        ; Check if any API keys or org ID changed
+        if (savedValues.OpenAIApiKey != originalKeys.OpenAI 
+            || savedValues.OpenAIOrgId != originalKeys.OpenAIOrgId
+            || savedValues.ReplicateApiKey != originalKeys.Replicate
+            || savedValues.GoogleApiKey != originalKeys.Google
+            || savedValues.AnthropicApiKey != originalKeys.Anthropic
+            || savedValues.DeepSeekApiKey != originalKeys.DeepSeek) {
+            SpoutReload()
         }
+        
         exit()
-
     }
 
     ReloadSettingsGui(gui) {

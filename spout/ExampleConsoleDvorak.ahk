@@ -12,18 +12,6 @@
 ; Add a custom tip to the tray icon
 A_IconTip := A_IconTip . "Schuyler's Original Dvorak Hotkey Map`n Capslock + Backspace to restart"
 
-; Helper function to check premium feature availability
-IfAddon(funcName, params := "") {
-    if (IsSet(%funcName%)) {
-        if (params = "") {
-            %funcName%()
-        } else {
-            %funcName%(params)
-        }
-    } else {
-        MsgBox("This feature requires an addon made available to Supporters of the project. Please visit Spout.dev to learn more.", "Addon Required", "Icon!")
-    }
-}
 
 ; Hotkey: CapsLock disabled for use as a modifier
 ; Function: Placeholder for CapsLock functionality

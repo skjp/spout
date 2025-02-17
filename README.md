@@ -13,6 +13,8 @@ SPOUT is an experimental software framework created to unlock the full potential
 
 ## 🚀 Getting Started
 
+
+
 ### Prerequisites
 
 Before installing SPOUT, ensure you have:

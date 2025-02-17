@@ -33,6 +33,39 @@ if (A_ScriptFullPath = A_LineFile) {
 TraySetIcon("./shared/favicon.ico")
 A_IconTip := "Spout: "
 
+; Create custom tray menu
+A_TrayMenu.Delete  ; Clear default menu
+
+; Add main options
+A_TrayMenu.Add("Settings", (*) => SpoutSettings())
+A_TrayMenu.Add("Clipboard Manager", (*) => SpoutClipboard())
+A_TrayMenu.Add("Quick Notes", (*) => SpoutNoter())
+A_TrayMenu.Add("Documentation", (*) => Run("https://spout.dev"))
+A_TrayMenu.Add("Reload Script", (*) => SpoutReload())
+
+; Add separator before core modules
+A_TrayMenu.Add()
+
+; Create Core Module GUIs submenu
+coreMenu := Menu()
+coreMenu.Add("Reduce", (*) => SpoutReduce())
+coreMenu.Add("Search", (*) => SpoutSearch())
+coreMenu.Add("Enhance", (*) => SpoutEnhance())
+coreMenu.Add("Expand", (*) => SpoutExpand())
+coreMenu.Add("Mutate", (*) => SpoutMutate())
+coreMenu.Add("Translate", (*) => SpoutTranslate())
+coreMenu.Add("Generate", (*) => SpoutGenerate())
+coreMenu.Add("Iterate", (*) => SpoutIterate())
+coreMenu.Add("Converse", (*) => SpoutConverse())
+coreMenu.Add("Evaluate", (*) => SpoutEvaluate())
+coreMenu.Add("Imagine", (*) => SpoutImagine())
+coreMenu.Add("Parse", (*) => SpoutParse())
+A_TrayMenu.Add("Core Module GUIs", coreMenu)
+
+; Add separator before exit
+A_TrayMenu.Add()
+A_TrayMenu.Add("Exit", (*) => ExitApp())
+
 ; Define the path to the INI file
 global settingsFile := A_ScriptDir . "\config\settings.ini"
 
@@ -59,6 +92,20 @@ global SpoutGui := ""
 
 global chatHistory := ""
 
+
+
+; Helper function to check premium feature availability
+IfAddon(funcName, params := "") {
+    if (IsSet(%funcName%)) {
+        if (params = "") {
+            %funcName%()
+        } else {
+            %funcName%(params)
+        }
+    } else {
+        MsgBox("This feature requires an addon made available to Supporters of the project. Please visit Spout.dev/basics/contributing to learn more.", "Addon Required", "Icon!")
+    }
+}
 
 ; Function to load available models based on API keys
 LoadAvailableModels() {
@@ -1526,10 +1573,15 @@ SpoutNoter(content := "", auto := false, file := "Default.txt") {
     SetTimer(ScrollToBottom, -100)
 
     ScrollToBottom() {
-        totalLines := SendMessage(0xBA, 0, 0, 0, , "ahk_id " . fileEdit.Hwnd)
-        SendMessage(0xB6, totalLines * 2, 0, , "ahk_id " . fileEdit.Hwnd) 
-        ControlSend("{Ctrl down}{End}{Ctrl up}", , fileEdit)
-        noteEdit.Focus()
+        try {
+            totalLines := SendMessage(0xBA, 0, 0, 0, , "ahk_id " . fileEdit.Hwnd)
+            SendMessage(0xB6, totalLines * 2, 0, , "ahk_id " . fileEdit.Hwnd)
+            ControlSend("{Ctrl down}{End}{Ctrl up}", , fileEdit)
+            noteEdit.Focus()
+        } catch Error as e {
+            ; Silently fail if window/control not found
+            return
+        }
     }
 
     saveButton := SpoutGui.Add("Button", "x15 y+10 w160 h40", "Save")

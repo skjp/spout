@@ -5,6 +5,13 @@ import { argv } from 'zx';
 import { fileURLToPath } from 'url';
 import { resolve, join } from 'path';
 
+const {
+    threads = 1,
+    genre,
+    style,
+    outline
+} = argv;
+
 console.log('\n📚 Book Writer Pipeline Initializing...');
 
 /**
@@ -29,12 +36,12 @@ async function generateInitialOutline() {
         console.log('Executing spout imagine command...');
         
         // Create the input text with proper escaping
-        const objective = "Write a 7 part outline for a comedy movie about a talking horse who lives in Florida"
+        const objective = `Write a 7 part outline for a ${genre ? genre : 'comedy'} story ${style ? `with a ${style} writing style` : ''}`
             .replace(/'/g, "'\\''")
             .replace(/"/g, '\\"')
             .replace(/\$/g, '\\$');
             
-        const context = "Outline for a comedy movie about a talking horse who lives in Florida"
+        const context = `Outline for a ${genre ? genre : 'comedy'} story ${style ? `using ${style} writing style` : ''}`
             .replace(/'/g, "'\\''")
             .replace(/"/g, '\\"')
             .replace(/\$/g, '\\$');
@@ -49,26 +56,21 @@ async function generateInitialOutline() {
             .replace(/"/g, '\\"')
             .replace(/\$/g, '\\$');
 
-        // Log the command for debugging
-        console.log('Command parameters:');
-        console.log('- Objective:', objective);
-        console.log('- Context:', context);
-        console.log('- Format:', format);
-        console.log('- Stipulations:', stipulations);
-
         const outline = await $`spout imagine -u outline \
             --objective "${objective}" \
             --context "${context}" \
             --output-format "${format}" \
             --stipulations "${stipulations}"`;
 
-        // Log the raw output
-        console.log('\nRaw output from spout:');
-        console.log(outline.stdout);
-        console.log('\nAttempting to parse output...');
-
-        // For now, just return the raw output
-        return outline.stdout;
+        // Try to parse the JSON output
+        try {
+            const parsedOutline = JSON.parse(outline.stdout.trim());
+            return parsedOutline;
+        } catch (parseError) {
+            console.error('Failed to parse outline JSON:', parseError);
+            console.log('Raw output:', outline.stdout);
+            throw new Error('Invalid outline format received');
+        }
 
     } catch (error) {
         console.error('Error in outline generation:', error);
@@ -82,21 +84,44 @@ async function generateInitialOutline() {
 async function expandSections(outlineData, projectDir) {
     console.log('📝 Expanding sections into detailed text...');
     const expandedSections = [];
+    
+    // Validate outline data structure
+    if (!outlineData || !outlineData.Plan || !Array.isArray(outlineData.Plan)) {
+        throw new Error('Invalid outline data structure');
+    }
+    
+    // Create a pool of promises to handle parallel processing
+    const maxConcurrent = parseInt(threads) || 2;
+    
+    // Process chapters in batches
+    for (let i = 0; i < outlineData.Plan.length; i += maxConcurrent) {
+        const batch = outlineData.Plan.slice(i, i + maxConcurrent);
+        const batchPromises = batch.map(async (chapter, batchIndex) => {
+            const index = i + batchIndex;
+            console.log(`Expanding chapter ${index + 1}...`);
+            try {
+                if (!chapter.Description || !chapter.Details) {
+                    throw new Error(`Invalid chapter data for chapter ${index + 1}`);
+                }
 
-    for (const [index, chapter] of outlineData.Plan.entries()) {
-        console.log(`Expanding chapter ${index + 1}...`);
+                const prompt = `[${chapter.Description}] (${chapter.Details.join(', ')}) {use ${style ? style : 'child-friendly'} language, maintain appropriate tone for ${genre ? genre : 'general'} genre}`
+                    .replace(/'/g, "'\\''")
+                    .replace(/"/g, '\\"')
+                    .replace(/\$/g, '\\$');
+
+                const expanded = await $`spout expand -u develop "${prompt}"`;
+                return expanded.stdout.trim();
+            } catch (error) {
+                console.error(`Error expanding chapter ${index + 1}:`, error);
+                return `[Error expanding chapter ${index + 1}]`;
+            }
+        });
+
         try {
-            // Create the input prompt in the correct format
-            const prompt = `[${chapter.Description}] (${chapter.Details.join(', ')}) {use child-friendly language, include dialogue, and maintain a whimsical tone}`
-                .replace(/'/g, "'\\''")
-                .replace(/"/g, '\\"')
-                .replace(/\$/g, '\\$');
-
-            const expanded = await $`spout expand -u develop "${prompt}"`;
-            expandedSections.push(expanded.stdout);
+            const batchResults = await Promise.all(batchPromises);
+            expandedSections.push(...batchResults);
         } catch (error) {
-            console.error(`Error expanding chapter ${index + 1}:`, error);
-            throw error;
+            console.error('Error processing batch:', error);
         }
     }
 
@@ -120,13 +145,18 @@ async function generateBook() {
     
     try {
         // Phase 1: Generate Initial Outline
-        const outline = await generateInitialOutline();
+        const outlineData = await generateInitialOutline();
         
-        // Parse the JSON output
-        const outlineData = JSON.parse(outline);
+        // Validate outline data
+        if (!outlineData || !outlineData.Plan) {
+            throw new Error('Invalid outline data received');
+        }
         
         // Format the outline in the desired structure
         const formattedOutline = outlineData.Plan.map(chapter => {
+            if (!chapter.Description || !chapter.Details) {
+                throw new Error('Invalid chapter data structure');
+            }
             return `[${chapter.Description}](${chapter.Details.join(')(')})`;
         }).join('\n\n');
         
@@ -144,6 +174,12 @@ async function generateBook() {
         return projectDir;
     } catch (error) {
         console.error('Error during book generation:', error);
+        // Create error log file
+        const errorLog = `Error occurred at ${new Date().toISOString()}\n${error.stack || error}`;
+        await fs.writeFile(
+            `${projectDir}/error.log`,
+            errorLog
+        ).catch(console.error);
         throw error;
     }
 }

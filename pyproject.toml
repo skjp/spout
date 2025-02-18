@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spout"
-version = "0.8.0"
+version = "0.8.1"
 description = "A CLI tool for using AI models in a modular way"
 readme = "Readme.md"
 authors = [

@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Resolved SpoutNoter system version compatibility issues
 
+### Fixed (2025-02-18)
+- Bump pyproject
+- improve scripting examples and shortcuts.
+
 ## [0.8.0] - 2025-02-11
 
 ### Fixed (2025-02-12)

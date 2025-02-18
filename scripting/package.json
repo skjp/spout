@@ -26,6 +26,13 @@
     "evolve:creative": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 6 --criteria 'creativity, originality, innovation, coherence'",
     "evolve:formal": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 5 --criteria 'professionalism, clarity, formality, accuracy'",
     "evolve:engaging": "cd example_evolution_pipeline && zx evolution_pipeline.mjs --variants 6 --criteria 'engagement, interest, memorability, flow'",
-    "evolve:custom": "cd example_evolution_pipeline && zx evolution_pipeline.mjs"
+    "evolve:custom": "cd example_evolution_pipeline && zx evolution_pipeline.mjs",
+    "novel:quick": "cd example_novel_writer && zx novel_writer.mjs --threads 2",
+    "novel:standard": "cd example_novel_writer && zx novel_writer.mjs --threads 4",
+    "novel:full": "cd example_novel_writer && zx novel_writer.mjs --threads 6",
+    "novel:scifi": "cd example_novel_writer && zx novel_writer.mjs --genre 'science_fiction' --style 'technical' --threads 4",
+    "novel:fantasy": "cd example_novel_writer && zx novel_writer.mjs --genre 'fantasy' --style 'descriptive' --threads 1",
+    "novel:mystery": "cd example_novel_writer && zx novel_writer.mjs --genre 'mystery' --style 'suspenseful' --threads 4",
+    "novel:custom": "cd example_novel_writer && zx novel_writer.mjs"
   }
 }

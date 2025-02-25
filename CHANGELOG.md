@@ -14,6 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Resolved SpoutNoter system version compatibility issues
 
+### Added (2025-02-25)
+- Added support for latest Gemini and Claude Models in example_models.ini file
+
 ### Fixed (2025-02-18)
 - Bump pyproject
 - improve scripting examples and shortcuts.

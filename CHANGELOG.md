@@ -33,3 +33,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added (2025-02-11)
 - Initial public project release
 
+### Added (2025-4-6)
+- added support for latest gemini 2.5 and Meta Llama 4

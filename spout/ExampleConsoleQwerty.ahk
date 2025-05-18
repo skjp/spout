@@ -34,7 +34,8 @@ CapsLock::return
 
 ;-----------------------------------Keyboard Lock States-----------------------------------
 
-; Hotkey: Shift + CapsLock (Capslock)
+
+; Hotkey: Shift + CapsLock
 ; Function: Toggles CapsLock state
 +CapsLock:: {
     ; Prevent the default Capslock key behavior
@@ -60,34 +61,36 @@ CapsLock::return
     SetTimer () => ToolTip(), -1000
 }
 
-; Hotkey: Win + CapsLock (Capslock)
+; Hotkey: Win + CapsLock
 ; Function: Checks and displays the current state of NumLock, ScrollLock, and CapsLock
 #Capslock::CheckLockState()
 
-; Hotkey: CapsLock (Capslock) + Escape
-; Function: Sends "# " to switch keyboard layout
+; Hotkey: CapsLock + Escape
+;Function: Reloads this script
 Capslock & Escape::SpoutReload()
 
 ;-----------------------------------Basic Spout Utilities-----------------------------------
-; Hotkey: CapsLock (Capslock) + Space
+; Hotkey: CapsLock + Space
 ; Function: Show Spout Context Menu
 Capslock & Space:: {
     SpoutContextMenu().Show()
 }
 
-; Hotkey: CapsLock (Capslock) + ` (backtick)
+; Hotkey: CapsLock + ` (backtick)
 ; Function: Opens the settings GUI for the script
 Capslock & `::SpoutSettings()
 
-; Hotkey: CapsLock (Capslock) + Tab
+; Hotkey: CapsLock + Tab
 ; Function: Displays clipboard content using SpoutClipboard() function
 CapsLock & Tab::SpoutClipboard()
 
 ;Hotkey: Capslock + Backspace
-;Function: Reloads this script
-Capslock & BackSpace::{
-    Send "# "
-}
+; Function: Sends "# " to switch keyboard layout
+; Windows key must be non-disabled to use this function
+Capslock & Backspace::{
+  Send "# "
+}  
+
 
 ;-----------------------------Spout Core GUI functions number keys;-----------------------------
 

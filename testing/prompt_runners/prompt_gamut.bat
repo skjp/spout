@@ -160,8 +160,14 @@ for /l %%m in (1,1,%model_count%) do (
                 
                 :: Run the prompt
                 for /f "tokens=*" %%o in ('spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "%%p" 2^>^&1') do (
-                    echo. >> "%results_file%"
-                    echo %%o >> "%results_file%"
+                    set "output_line=%%o"
+                    REM Check if the line is the one we want to filter out (case-insensitive)
+                    echo "!output_line!" | findstr /I /C:"Binary file (standard input) matches" > nul
+                    if errorlevel 1 (
+                        REM If not found, append the line
+                        echo. >> "%results_file%"
+                        echo !output_line! >> "%results_file%"
+                    )
                 )
                 
                 :: Get end time in milliseconds
@@ -198,8 +204,14 @@ for /l %%m in (1,1,%model_count%) do (
             
             :: Run the prompt
             for /f "tokens=*" %%o in ('spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "%%p" 2^>^&1') do (
-                echo. >> "%results_file%"
-                echo %%o >> "%results_file%"
+                set "output_line=%%o"
+                REM Check if the line is the one we want to filter out (case-insensitive)
+                echo "!output_line!" | findstr /I /C:"Binary file (standard input) matches" > nul
+                if errorlevel 1 (
+                    REM If not found, append the line
+                    echo. >> "%results_file%"
+                    echo !output_line! >> "%results_file%"
+                )
             )
             
             :: Get end time in milliseconds

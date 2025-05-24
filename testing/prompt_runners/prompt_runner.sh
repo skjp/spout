@@ -77,15 +77,24 @@ done
 timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
 results_file="$TESTS_DIR/conversation_test-$timestamp.txt"
 
-# Get model information from settings.ini
-SETTINGS_FILE="../spout/config/settings.ini"
+# Get model information from settings.ini for the title
+SETTINGS_FILE="../../spout/config/settings.ini"
+model_name_for_title_segment=""
 if [ -f "$SETTINGS_FILE" ]; then
-    model_info=$(grep "PreferredModel" "$SETTINGS_FILE" | cut -d'=' -f2)
-    echo "Prompting Results for $(basename "$selected_file") using $model_info - $timestamp" > "$results_file"
-else
-    echo "Prompting Results for $(basename "$selected_file") - $timestamp" > "$results_file"
+    # Grep for the line containing PreferredModel.
+    # sed: 1. Remove everything up to and including the first '='.
+    #      2. Trim leading spaces from the value.
+    #      3. Trim trailing spaces from the value.
+    model_name_value=$(grep "PreferredModel" "$SETTINGS_FILE" | sed 's/[^=]*=//;s/^[[:space:]]*//;s/[[:space:]]*$//')
+    if [ -n "$model_name_value" ]; then # Check if model_name_value is not empty
+        model_name_for_title_segment=" using $model_name_value"
+    fi
 fi
 
+# Construct the title line for the results file.
+# This uses > to overwrite/create the file.
+# If selected_file is "ALL", basename will correctly output "ALL".
+echo "Prompting Results for $(basename "$selected_file")$model_name_for_title_segment - $timestamp" > "$results_file"
 echo "===================" >> "$results_file"
 echo >> "$results_file"
 
@@ -109,16 +118,19 @@ if [ "$selected_file" = "ALL" ]; then
             # Run spout converse command with timing measurement and empty history
             output=$(spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "$prompt" 2>&1)
             execution_time=$(echo "$output" | grep -o "Execution time: [0-9.]*ms" | sed 's/Execution time: //')
-            response=$(echo "$output" | grep -v "Execution time:")
+            # Extract response, excluding "Execution time:" line
+            raw_response_content=$(echo "$output" | grep -v "Execution time:")
+            # Filter out "Binary file (standard input) matches"
+            filtered_response_content=$(echo "$raw_response_content" | grep -v "Binary file (standard input) matches")
             
             # Print to terminal
             echo -e "\nResponse (${execution_time}):"
-            echo "$response"
+            echo "$filtered_response_content"
             echo -e "\n-------------------"
             
             # Save to results file
             echo -e "\nResponse (${execution_time}):" >> "$results_file"
-            echo "$response" >> "$results_file"
+            echo "$filtered_response_content" >> "$results_file"
             echo -e "\n-------------------\n" >> "$results_file"
             
         done < <(grep -v '^[[:space:]]*$' "$file")
@@ -140,16 +152,19 @@ else
         # Run spout converse command with timing measurement and empty history
         output=$(spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "$prompt" 2>&1)
         execution_time=$(echo "$output" | grep -o "Execution time: [0-9.]*ms" | sed 's/Execution time: //')
-        response=$(echo "$output" | grep -v "Execution time:")
+        # Extract response, excluding "Execution time:" line
+        raw_response_content=$(echo "$output" | grep -v "Execution time:")
+        # Filter out "Binary file (standard input) matches"
+        filtered_response_content=$(echo "$raw_response_content" | grep -v "Binary file (standard input) matches")
         
         # Print to terminal
         echo -e "\nResponse (${execution_time}):"
-        echo "$response"
+        echo "$filtered_response_content"
         echo -e "\n-------------------"
         
         # Save to results file
         echo -e "\nResponse (${execution_time}):" >> "$results_file"
-        echo "$response" >> "$results_file"
+        echo "$filtered_response_content" >> "$results_file"
         echo -e "\n-------------------\n" >> "$results_file"
         
     done < <(grep -v '^[[:space:]]*$' "$selected_file")

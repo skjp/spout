@@ -89,6 +89,38 @@ for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set da
 set "timestamp=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2%_%datetime:~8,2%-%datetime:~10,2%-%datetime:~12,2%"
 set "results_file=%TESTS_DIR%\conversation_test-%timestamp%.txt"
 
+:: Determine the base name for the title (file or directory)
+set "title_subject_name="
+if "!process_all!"=="1" (
+    for %%F in ("!selected_path!") do set "title_subject_name=%%~nxF (All files)"
+) else (
+    for %%F in ("!selected_file!") do set "title_subject_name=%%~nxF"
+)
+
+:: Get model information from settings.ini for the title
+set "SETTINGS_FILE=..\spout\config\settings.ini"
+set "model_name_for_title_segment="
+if exist "%SETTINGS_FILE%" (
+    for /f "tokens=1,* delims==" %%a in ('type "%SETTINGS_FILE%" ^| findstr /B /C:"PreferredModel"') do (
+        set "model_line_value=%%b"
+        REM Trim leading spaces
+        for /f "tokens=*" %%t in ("!model_line_value!") do set "model_line_value=%%t"
+        REM Trim trailing spaces (more complex in batch, simple removal here)
+        REM Basic trailing space removal, may not cover all cases perfectly
+        if defined model_line_value (
+            for /l %%z in (1 1 32) do (
+                if "!model_line_value:~-1!"==" " set "model_line_value=!model_line_value:~0,-1!"
+            )
+            if defined model_line_value set "model_name_for_title_segment= using !model_line_value!"
+        )
+    )
+)
+
+:: Construct and write the title line to the results file (overwrite)
+echo Prompting Results for !title_subject_name!!model_name_for_title_segment! - !timestamp! > "%results_file%"
+echo =================== >> "%results_file%"
+echo. >> "%results_file%"
+
 :: Process files
 if "!process_all!"=="1" (
     for /l %%i in (1,1,!dir_count!) do (
@@ -99,7 +131,12 @@ if "!process_all!"=="1" (
             echo Prompt: >> "%results_file%"
             echo %%p >> "%results_file%"
             
-            spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "%%p" >> "%results_file%" 2>&1
+            set "temp_output_file=%TESTS_DIR%\spout_temp_output.txt"
+            spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "%%p" > "%temp_output_file%" 2>&1
+            
+            REM Filter out the unwanted line and append to results
+            findstr /V /C:"Binary file (standard input) matches" "%temp_output_file%" >> "%results_file%"
+            del "%temp_output_file%"
             
             echo. >> "%results_file%"
             echo ------------------- >> "%results_file%"
@@ -114,7 +151,12 @@ if "!process_all!"=="1" (
         echo Prompt: >> "%results_file%"
         echo %%p >> "%results_file%"
         
-        spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "%%p" >> "%results_file%" 2>&1
+        set "temp_output_file=%TESTS_DIR%\spout_temp_output.txt"
+        spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "%%p" > "%temp_output_file%" 2>&1
+        
+        REM Filter out the unwanted line and append to results
+        findstr /V /C:"Binary file (standard input) matches" "%temp_output_file%" >> "%results_file%"
+        del "%temp_output_file%"
         
         echo. >> "%results_file%"
         echo ------------------- >> "%results_file%"

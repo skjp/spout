@@ -158,10 +158,13 @@ for model in "${active_models[@]}"; do
                 
                 output=$(spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "$prompt" 2>&1)
                 execution_time=$(echo "$output" | grep -o "Execution time: [0-9.]*ms" | sed 's/Execution time: //')
-                response=$(echo "$output" | grep -v "Execution time:")
+                # Extract response, excluding "Execution time:" line
+                raw_response_content=$(echo "$output" | grep -v "Execution time:")
+                # Filter out "Binary file (standard input) matches"
+                filtered_response_content=$(echo "$raw_response_content" | grep -v "Binary file (standard input) matches")
                 
                 echo -e "\nResponse (${execution_time}):" >> "$results_file"
-                echo "$response" >> "$results_file"
+                echo "$filtered_response_content" >> "$results_file" # Use filtered content
                 echo -e "\n-------------------\n" >> "$results_file"
                 
             done < <(grep -v '^[[:space:]]*$' "$file")
@@ -181,10 +184,13 @@ for model in "${active_models[@]}"; do
             
             output=$(spout -m converse --primer "You are a helpful assistant" --history-file "_" --recent-message "$prompt" 2>&1)
             execution_time=$(echo "$output" | grep -o "Execution time: [0-9.]*ms" | sed 's/Execution time: //')
-            response=$(echo "$output" | grep -v "Execution time:")
+            # Extract response, excluding "Execution time:" line
+            raw_response_content=$(echo "$output" | grep -v "Execution time:")
+            # Filter out "Binary file (standard input) matches"
+            filtered_response_content=$(echo "$raw_response_content" | grep -v "Binary file (standard input) matches")
             
             echo -e "\nResponse (${execution_time}):" >> "$results_file"
-            echo "$response" >> "$results_file"
+            echo "$filtered_response_content" >> "$results_file" # Use filtered content
             echo -e "\n-------------------\n" >> "$results_file"
             
         done < <(grep -v '^[[:space:]]*$' "$selected_file")

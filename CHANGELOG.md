@@ -24,8 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed (2025-05-18)
 - Corrected minor errors in 'Example Consoles' scripts and comments
 
-### Added (2025-0522)
+### Added (2025-05-22)
 - Updated model option config file with newest models from Anthropic and OpenAI
+
+### Added (2025-05-24)
+- Add some 'Trolley' ethics prompt experiments for the prompt runner testing scripts
+- 
+### Fixed (2025-05-24)
+- corrected Gemini model variant
 
 ## [0.8.0] - 2025-02-11
 

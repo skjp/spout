@@ -30,7 +30,7 @@ if (A_ScriptFullPath = A_LineFile) {
 ; #l::CheckLockState()     ; Win+L to check lock states
 
 ; Set the try Icon for Spout
-TraySetIcon("./shared/favicon.ico")
+TraySetIcon("./shared/icon.ico")
 A_IconTip := "Spout: "
 
 ; Create custom tray menu

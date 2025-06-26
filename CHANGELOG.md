@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed (2025-05-24)
 - corrected Gemini model variant
 
+### Updated (2025-06-26)
+- updated tray icon image
+
 ## [0.8.0] - 2025-02-11
 
 ### Fixed (2025-02-12)
